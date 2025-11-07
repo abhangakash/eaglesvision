@@ -1,9 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import {
+  FaUser, 
+  FaMobileAlt, 
+  FaStethoscope, 
+  FaCheckCircle, 
+  FaHospital, 
+  FaHome, 
+  FaCalendarAlt, 
+  FaClock, 
+  FaStickyNote, 
+  FaMapMarkerAlt
+} from 'react-icons/fa'; // Importing specific icons
+
 import "../styles/bookingform.css";
 
-// IMPORTANT: Replace this with the owner's WhatsApp number (with country code, e.g., +919876543210)
+// IMPORTANT: Replace this with the owner's WhatsApp number
 const OWNER_PHONE_NUMBER = "+919665400807"; 
+
+// Using React Icon components directly in the JSX
+const ICON_SIZE = 18; // Standard size for inline icons
 
 export default function Booking() {
   const [serviceOther, setServiceOther] = useState(false);
@@ -19,45 +35,44 @@ export default function Booking() {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("Form Data:", data);
-
-    // --- WhatsApp Logic Starts Here ---
+    // ... (WhatsApp Logic remains the same, using UNICODE icons for the message) ...
     const servicesList = data.services.filter(s => s !== "Other").join(", ");
     const otherServiceText = data.otherService ? ` & Other: ${data.otherService}` : '';
     const selectedServices = `${servicesList}${otherServiceText}`;
     
     let locationDetails;
     if (data.visitType === "center") {
-      locationDetails = `Center: ${data.centerLocation}`;
+      locationDetails = `📍 Center: ${data.centerLocation}`;
     } else {
-      locationDetails = `Home Address: ${data.addressLine1}, ${data.city}, ${data.district}, ${data.state} - ${data.pin}`;
+      locationDetails = `🏠 Home Address: ${data.addressLine1}, ${data.city}, ${data.district}, ${data.state} - ${data.pin}`;
     }
 
-    const message = `*New Appointment Request!*
-Name: ${data.name}
-Phone: ${data.phone}
-Service(s): ${selectedServices}
-Visit Type: ${data.visitType === 'center' ? 'At Center' : 'At Home'}
-${locationDetails}
-Date & Time: ${data.date} at ${data.time}
-Notes: ${data.notes || 'None provided'}`;
+    const message = `
+*✨ New Appointment Request! (Web Form) ✨*
+-------------------------------------------------
+👤 *Name*: ${data.name}
+📱 *Phone*: ${data.phone}
+📝 *Service(s)*: ${selectedServices}
+✅ *Visit Type*: ${data.visitType === 'center' ? 'At Center' : 'At Home'}
+🗺️ ${locationDetails}
+📅 *Date & Time*: ${data.date} at ${data.time}
+💬 *Notes*: ${data.notes || 'None provided'}
+-------------------------------------------------
+`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${OWNER_PHONE_NUMBER}?text=${encodedMessage}`;
 
-    // Open WhatsApp link in a new tab
     window.open(whatsappUrl, "_blank");
     
-    // Alert the user and reset the form *after* opening the link
     alert("Please check your new tab to confirm and send the appointment request via WhatsApp!");
     reset();
     setServiceOther(false);
     setVisitType("center");
   };
-  // --- WhatsApp Logic Ends Here ---
 
 
-  // --- Custom Validators ---
+  // --- Custom Validators & Handlers (unchanged) ---
   const validateName = (value) => {
     if (!/^[A-Za-z ]+$/.test(value)) return "Only letters and spaces allowed";
     if (value.trim().length < 3) return "Name must be at least 3 characters";
@@ -68,7 +83,6 @@ Notes: ${data.notes || 'None provided'}`;
     /^[6-9][0-9]{9}$/.test(value) ||
     "Must be 10 digits, starting with 6, 7, 8, or 9";
 
-  // --- Handlers ---
   const handleNameKeyPress = (e) => {
     const char = e.key;
     if (!/^[a-zA-Z\s]$/.test(char)) e.preventDefault();
@@ -89,11 +103,9 @@ Notes: ${data.notes || 'None provided'}`;
     if (!checked) setValue("otherService", "");
   };
 
-  // --- Date restrictions ---
   const today = new Date();
   const minDate = today.toISOString().split("T")[0];
 
-  // --- Generate available times dynamically ---
   const generateTimes = (startHour, endHour) => {
     const times = [];
     for (let hour = startHour; hour <= endHour; hour++) {
@@ -120,39 +132,11 @@ Notes: ${data.notes || 'None provided'}`;
   }, [visitType]);
 
   const indianStates = [
-    "Andhra Pradesh",
-    "Arunachal Pradesh",
-    "Assam",
-    "Bihar",
-    "Chhattisgarh",
-    "Goa",
-    "Gujarat",
-    "Haryana",
-    "Himachal Pradesh",
-    "Jharkhand",
-    "Karnataka",
-    "Kerala",
-    "Madhya Pradesh",
-    "Maharashtra",
-    "Manipur",
-    "Meghalaya",
-    "Mizoram",
-    "Nagaland",
-    "Odisha",
-    "Punjab",
-    "Rajasthan",
-    "Sikkim",
-    "Tamil Nadu",
-    "Telangana",
-    "Tripura",
-    "Uttar Pradesh",
-    "Uttarakhand",
-    "West Bengal",
-    "Delhi",
-    "Puducherry",
-    "Chandigarh",
-    "Jammu and Kashmir",
-    "Ladakh",
+    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", 
+    "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", 
+    "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", 
+    "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Delhi", "Puducherry", 
+    "Chandigarh", "Jammu and Kashmir", "Ladakh",
   ];
 
   return (
@@ -160,7 +144,7 @@ Notes: ${data.notes || 'None provided'}`;
       <div className="booking-container">
         <h2 className="booking-title">Book an Appointment</h2>
         <p className="booking-subtitle">
-          Please fill in all mandatory fields (*)
+          Please fill in all mandatory fields (<span style={{color: 'red'}}>*</span>)
         </p>
 
         {isSubmitSuccessful && (
@@ -170,10 +154,13 @@ Notes: ${data.notes || 'None provided'}`;
         )}
 
         <form className="booking-form" onSubmit={handleSubmit(onSubmit)} noValidate>
-          {/* Form groups from your original code... */}
-          {/* Full Name */}
+          
+          {/* 1. Full Name */}
           <div className="form-group">
-            <label htmlFor="name">Patient Name *</label>
+            <label htmlFor="name">
+              <FaUser size={ICON_SIZE} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> 
+              Patient Name <span style={{color: 'red'}}>*</span>
+            </label>
             <input
               id="name"
               type="text"
@@ -187,9 +174,12 @@ Notes: ${data.notes || 'None provided'}`;
             {errors.name && <p className="error">{errors.name.message}</p>}
           </div>
 
-          {/* Mobile Number */}
+          {/* 2. Mobile Number */}
           <div className="form-group">
-            <label htmlFor="phone">Mobile Number *</label>
+            <label htmlFor="phone">
+              <FaMobileAlt size={ICON_SIZE} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> 
+              Mobile Number <span style={{color: 'red'}}>*</span>
+            </label>
             <input
               id="phone"
               type="tel"
@@ -203,20 +193,17 @@ Notes: ${data.notes || 'None provided'}`;
             {errors.phone && <p className="error">{errors.phone.message}</p>}
           </div>
 
-          {/* Services */}
+          {/* 3. Services */}
           <div className="form-group">
-            <label>Select Service Type *</label>
+            <label>
+              <FaStethoscope size={ICON_SIZE} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> 
+              Select Service Type <span style={{color: 'red'}}>*</span>
+            </label>
+            {/* Checkboxes (unchanged) */}
             <div className="checkbox-group">
               {[
-                "Blood Test",
-                "MRI Scan",
-                "CT Scan",
-                "Ultrasound",
-                "ECG",
-                "Digital X-ray",
-                "Portable X-ray",
-                "Pathology Lab",
-                "Full Body Checkup",
+                "Blood Test", "MRI Scan", "CT Scan", "Ultrasound", "ECG", "Digital X-ray", 
+                "Portable X-ray", "Pathology Lab", "Full Body Checkup",
               ].map((service) => (
                 <label key={service}>
                   <input
@@ -255,9 +242,12 @@ Notes: ${data.notes || 'None provided'}`;
             )}
           </div>
 
-          {/* Visit Type (same row) */}
+          {/* 4. Visit Type (same row) */}
           <div className="form-group horizontal-group">
-            <label>Visit Type *</label>
+            <label>
+              <FaCheckCircle size={ICON_SIZE} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> 
+              Visit Type <span style={{color: 'red'}}>*</span>
+            </label>
             <div className="radio-row">
               <label>
                 <input
@@ -282,10 +272,13 @@ Notes: ${data.notes || 'None provided'}`;
             {errors.visitType && <p className="error">Select a visit type</p>}
           </div>
 
-          {/* Center Location */}
+          {/* 5. Center Location */}
           {visitType === "center" && (
             <div className="form-group">
-              <label>Center Location *</label>
+              <label>
+                <FaHospital size={ICON_SIZE} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> 
+                Center Location <span style={{color: 'red'}}>*</span>
+              </label>
               <select {...register("centerLocation", { required: true })}>
                 <option value="Main Center">Main Center (Default)</option>
                 <option disabled>Other locations - Coming soon</option>
@@ -294,10 +287,13 @@ Notes: ${data.notes || 'None provided'}`;
             </div>
           )}
 
-          {/* Home Address */}
+          {/* 6. Home Address */}
           {visitType === "home" && (
             <div className="form-group">
-              <label>Home Address *</label>
+              <label>
+                <FaHome size={ICON_SIZE} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> 
+                Home Address <span style={{color: 'red'}}>*</span>
+              </label>
               <input
                 type="text"
                 placeholder="Enter Address Line 1"
@@ -306,9 +302,10 @@ Notes: ${data.notes || 'None provided'}`;
               />
               {errors.addressLine1 && <p className="error">{errors.addressLine1.message}</p>}
 
+              {/* ... (Other address fields) ... */}
               <input
                 type="text"
-                placeholder="Enter Address Line 2"
+                placeholder="Enter Address Line 2 (Optional)"
                 onKeyPress={handleAddressKeyPress}
                 {...register("addressLine2")}
               />
@@ -334,7 +331,7 @@ Notes: ${data.notes || 'None provided'}`;
                 defaultValue=""
               >
                 <option value="" disabled>
-                  Select State 
+                  <FaMapMarkerAlt size={ICON_SIZE} style={{ marginRight: '5px' }} /> Select State 
                 </option>
                 {indianStates.map((state) => (
                   <option key={state} value={state}>
@@ -359,10 +356,13 @@ Notes: ${data.notes || 'None provided'}`;
             </div>
           )}
 
-          {/* Date & Time in one row */}
+          {/* 7. Date & Time in one row */}
           <div className="form-group horizontal-group">
             <div>
-              <label>Date *</label>
+              <label>
+                <FaCalendarAlt size={ICON_SIZE} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> 
+                Date <span style={{color: 'red'}}>*</span>
+              </label>
               <input
                 type="date"
                 min={minDate}
@@ -371,7 +371,10 @@ Notes: ${data.notes || 'None provided'}`;
               {errors.date && <p className="error">{errors.date.message}</p>}
             </div>
             <div>
-              <label>Time *</label>
+              <label>
+                <FaClock size={ICON_SIZE} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> 
+                Time <span style={{color: 'red'}}>*</span>
+              </label>
               <select {...register("time", { required: "Time is required" })}>
                 <option value="">Select Time</option>
                 {availableTimes.map((time) => (
@@ -384,9 +387,12 @@ Notes: ${data.notes || 'None provided'}`;
             </div>
           </div>
 
-          {/* Additional Notes */}
+          {/* 8. Additional Notes */}
           <div className="form-group">
-            <label>Additional Instructions (Optional)</label>
+            <label>
+              <FaStickyNote size={ICON_SIZE} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> 
+              Additional Instructions (Optional)
+            </label>
             <textarea placeholder="Enter Additional Instructions If Any "
               rows="4"
               {...register("notes", {

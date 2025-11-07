@@ -1,175 +1,224 @@
-/* Global & Container */
+/* --- Global Reset & Body Styling --- */
+:root {
+    --color-primary: #000080; /* Deep Navy Blue */
+    --color-secondary: #0056b3; /* Medium Blue/Hover State */
+    --color-white: #ffffff;
+    --color-light-grey: #f8f9fa;
+    --color-border: #ced4da;
+    --color-success: #28a745;
+    --color-error: #dc3545;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-deep: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-light-grey);
+    padding: 20px;
+}
+
+/* --- Section & Container Layout --- */
 .booking {
-  padding: 60px 20px;
-  background: #f9f9f9;
-  font-family: 'Poppins', sans-serif;
-  color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
 }
 
 .booking-container {
-  max-width: 900px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 50px 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    background: var(--color-white);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-deep);
+    width: 100%;
+    max-width: 700px; /* Max width for professional look */
+    border-top: 5px solid var(--color-primary);
 }
 
-/* Titles */
+/* --- Typography --- */
 .booking-title {
-  font-size: 2.8rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 10px;
-  color: #222;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 2.2rem;
 }
 
 .booking-subtitle {
-  font-size: 1.1rem;
-  text-align: center;
-  margin-bottom: 40px;
-  color: #555;
+    color: #6c757d;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--color-light-grey);
+    padding-bottom: 15px;
 }
 
-/* Success Message */
-.success-message {
-  background: #e6f9ed;
-  border: 1px solid #a2d5a0;
-  color: #2f6627;
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 30px;
-  font-weight: 500;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-/* Form */
+/* --- Form Structure & Groups --- */
 .booking-form {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* Form Group */
 .form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+    margin-bottom: 10px;
 }
 
 .form-group label {
-  font-weight: 600;
-  color: #444;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+    /* Styles to align React Icons */
+    display: flex; 
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  background: #fafafa;
+/* Ensures the red asterisk stays properly sized */
+.form-group label span {
+    color: var(--color-error);
+    font-weight: bold;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #5c6bc0;
-  box-shadow: 0 0 8px rgba(92, 107, 192, 0.2);
-  outline: none;
-  background: #fff;
+/* --- Input & Select Styling --- */
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #333;
+    box-sizing: border-box; /* Important for padding */
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Error Messages */
-.error {
-  color: red;
-  font-size: 0.875rem;
-  margin-top: 1px;
-  font-weight: bold;
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 128, 0.2);
 }
 
-/* Checkbox & Radio */
-.checkbox-group,
-.radio-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+/* Multiple Input Spacing (for address fields) */
+.form-group input + input,
+.form-group input + select,
+.form-group select + input {
+    margin-top: 10px;
 }
+
+/* --- Date & Time (Horizontal Group) --- */
+.horizontal-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* --- Checkbox/Radio Styling (Services & Visit Type) --- */
+/* --- Checkbox/Radio Styling (Services & Visit Type) --- */
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 12px 20px; /* vertical and horizontal spacing */
+    padding: 15px;
+    border: 1px dashed var(--color-border);
+    border-radius: 6px;
+    background-color: var(--color-white);
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: #444;
+    cursor: pointer;
+    white-space: nowrap; /* Keeps label text in one line */
+}
+
 
 .checkbox-group label,
 .radio-row label {
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-  gap: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+    font-weight: normal;
+    color: #555;
+    /* Reset flex layout for standard checkbox/radio labels */
+    display: inline-flex; 
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
 }
 
-.checkbox-group input[type="checkbox"],
-.radio-row input[type="radio"] {
-  width: 18px;
-  height: 18px;
+.radio-row {
+    display: flex;
+    gap: 20px;
+    padding-top: 5px;
 }
 
-/* Horizontal groups */
-.horizontal-group {
-  display: flex;
-  gap: 20px;
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 5px;
+    accent-color: var(--color-primary); /* Colors the checkbox/radio button */
+    cursor: pointer;
 }
 
-.horizontal-group > div {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+/* --- Error and Success Messages --- */
+.error {
+    color: var(--color-error);
+    margin-top: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
-/* Textarea */
-textarea {
-  resize: vertical;
-  min-height: 100px;
+.success-message {
+    background-color: #e6f7ea; /* Light green background */
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 600;
 }
 
-/* Submit Button */
+/* --- Submit Button --- */
 .submit-btn {
-  padding: 15px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(135deg, #5c6bc0, #3949ab);
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 25px rgba(92, 107, 192, 0.2);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.1s;
 }
 
-.submit-btn:hover {
-  background: linear-gradient(135deg, #3949ab, #5c6bc0);
-  box-shadow: 0 12px 30px rgba(92, 107, 192, 0.35);
+.submit-btn:hover:not(:disabled) {
+    background-color: var(--color-secondary);
+    transform: translateY(-1px);
 }
 
 .submit-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+    background-color: #adb5bd; /* Grey when disabled/submitting */
+    cursor: not-allowed;
+    opacity: 0.8;
 }
 
-/* Other Input Field */
-.form-group input[placeholder],
-.form-group textarea[placeholder] {
-  font-style: italic;
-  color: #5c5c5c;
-}
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+    /* ...existing styles... */
 
-/* Responsive */
-@media (max-width: 768px) {
-  .horizontal-group {
-    flex-direction: column;
-  }
-  .booking-container {
-    padding: 30px 20px;
-  }
+    /* Checkbox Group for Mobile: Two Wider Columns */
+    .checkbox-group {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* flexible two columns */
+        gap: 6px 12px; /* vertical and horizontal spacing */
+    }
+
+    .checkbox-group label {
+        white-space: normal; /* allows text to wrap inside the box */
+    }
 }
