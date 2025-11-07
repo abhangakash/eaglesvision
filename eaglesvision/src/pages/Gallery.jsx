@@ -5,7 +5,7 @@ import "../styles/gallery.css";
 const IMAGES = [
   {
     id: 1,
-    src: "/assets/img1.jpg",
+    src: "/public/assets/img1.jpg",
     title: "State-of-the-Art 3T MRI",
     category: "Machines",
     tagline: "Unparalleled clarity for precise diagnosis.",
@@ -14,7 +14,7 @@ const IMAGES = [
   },
   {
     id: 2,
-    src: "/assets/img2.jpg",
+    src: "/public/assets/img2.jpg",
     title: "Advanced Pathology Lab",
     category: "Labs",
     tagline: "Accuracy you can trust, managed by expert pathologists.",
@@ -23,7 +23,7 @@ const IMAGES = [
   },
   {
     id: 3,
-    src: "/assets/img3.jpg",
+    src: "/public/assets/img3.jpg",
     title: "Low-Dose CT Imaging Suite",
     category: "Machines",
     tagline: "Reduced radiation, maximized diagnostic yield.",
@@ -32,7 +32,7 @@ const IMAGES = [
   },
   {
     id: 4,
-    src: "/assets/img4.jpg",
+    src: "/public/assets/img4.jpg",
     title: "Elegant Patient Reception",
     category: "Reception",
     tagline: "A comfortable and calm start to your visit.",
@@ -41,7 +41,7 @@ const IMAGES = [
   },
   {
     id: 5,
-    src: "/assets/img5.jpg",
+    src: "/public/assets/img5.jpg",
     title: "4D High-Resolution Ultrasound",
     category: "Machines",
     tagline: "Dynamic imaging for early and detailed screening.",
@@ -50,7 +50,7 @@ const IMAGES = [
   },
   {
     id: 6,
-    src: "/assets/img6.jpg",
+    src: "/public/assets/img6.jpg",
     title: "Sterile Phlebotomy Bay",
     category: "Labs",
     tagline: "Comfort and hygiene in every sample collection.",
@@ -59,7 +59,7 @@ const IMAGES = [
   },
   {
     id: 7,
-    src: "/assets/img7.jpg",
+    src: "/public/assets/img7.jpg",
     title: "Our Expert Team at Work",
     category: "Staff",
     tagline: "Compassion meets world-class expertise.",
@@ -74,7 +74,7 @@ const VIDEOS = [
   {
     id: 1,
     title: "A Tour of Our Center & Advanced Technology",
-    url: "/assets/video1.mp4",
+    url: "/public/assets/video1.mp4",
     description:
       "Watch a brief walkthrough to see our commitment to technology and patient comfort in action. Understand what makes our center the benchmark for diagnostic excellence in the region.",
   },
