@@ -20,7 +20,7 @@ export default function App() {
           <Route path="/booking" element={<Booking />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/aboutus" element={<Aboutus />} />
+          <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
       </main>
       <Footer />
