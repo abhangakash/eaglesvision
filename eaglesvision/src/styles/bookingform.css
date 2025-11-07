@@ -1,6 +1,12 @@
+/* make sure main.css is imported already */
 .booking {
-  background: linear-gradient(180deg, #fff, #f9f7f4);
-  padding: 100px 8%;
+  padding: 80px 8%;
+  background: #faf7f2;
+}
+
+.booking-container {
+  max-width: 700px;
+  margin: auto;
   text-align: center;
 }
 
@@ -8,85 +14,96 @@
   font-family: "Playfair Display", serif;
   font-size: 2.2rem;
   color: var(--secondary);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .booking-subtitle {
   color: #666;
-  margin-bottom: 40px;
   font-size: 1rem;
+  margin-bottom: 30px;
 }
 
-.booking-container {
-  max-width: 700px;
-  margin: 0 auto;
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #c3e6cb;
 }
 
 .booking-form {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  padding: 40px;
-  border: 1px solid #e6e2da;
+  background: #fff;
+  padding: 35px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  text-align: left;
 }
 
 .form-group {
-  text-align: left;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
   display: block;
-  color: #555;
-  font-weight: 600;
-  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 6px;
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-group textarea {
   width: 100%;
   padding: 12px 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 0.95rem;
   color: #333;
-  background-color: #fff;
-  outline: none;
-  transition: all 0.3s ease;
+  transition: border 0.3s ease;
 }
 
 .form-group input:focus,
-.form-group select:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 6px rgba(242, 197, 99, 0.4);
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+  outline: none;
+}
+
+.error {
+  color: #d9534f;
+  font-size: 0.85rem;
+  margin-top: 4px;
 }
 
 .submit-btn {
   width: 100%;
-  background: var(--accent);
+  background: var(--gold);
   color: white;
-  border: none;
   padding: 14px;
-  border-radius: 8px;
   font-size: 1rem;
-  cursor: pointer;
   font-weight: 600;
-  transition: all 0.3s ease;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.submit-btn:hover {
-  background: #e1b24b;
-  transform: translateY(-2px);
+.submit-btn:disabled {
+  background: #b8a46a;
+  cursor: not-allowed;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #a8863a;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .booking {
-    padding: 70px 5%;
+    padding: 60px 5%;
   }
-
   .booking-form {
-    padding: 25px;
+    padding: 25px 20px;
   }
 }

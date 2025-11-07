@@ -1,59 +1,120 @@
+@import "./main.css";
+
 .hero {
   position: relative;
   height: 100vh;
-  background: url('/images/clinic-hero.jpg') center/cover no-repeat;
+  background: url("https://images.unsplash.com/photo-1587502536263-3e70b1a9d4a4?auto=format&fit=crop&w=1950&q=80")
+    center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.hero-overlay {
-  background: rgba(0, 0, 0, 0.45);
-  position: absolute;
-  inset: 0;
-}
-
 .hero-content {
   position: relative;
-  color: #fff;
+  z-index: 2;
+  max-width: 800px;
   text-align: center;
-  z-index: 1;
-  padding: 0 20px;
+  color: white;
+  padding: 2rem;
+  animation: fadeInUp 1.2s ease-out;
 }
 
-.hero-content h1 {
-  font-family: "Playfair Display", serif;
+.hero-title {
   font-size: 3rem;
-  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
-.hero-content p {
+.hero-title span {
+  color: var(--gold);
+}
+
+.hero-subtitle {
   font-size: 1.2rem;
-  margin-top: 10px;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  color: #f0f0f0;
 }
 
-.hero-btn {
-  display: inline-block;
-  margin-top: 20px;
-  background: #b08c3e;
-  color: #fff;
-  padding: 12px 30px;
-  border-radius: 5px;
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
-.hero-btn:hover {
-  background: #e0d4b7;
-  color: #1a1a1a;
+.btn-primary {
+  background-color: var(--gold);
+  color: #fff;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2rem;
+.btn-primary:hover {
+  background-color: #d6a41a;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid #fff;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
   }
-  .hero-content p {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
     font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
   }
 }
