@@ -233,4 +233,5 @@ input[type="radio"] {
   .horizontal-group {
     grid-template-columns: 1fr;
   }
+
 }
