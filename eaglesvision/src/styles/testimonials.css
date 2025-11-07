@@ -1,0 +1,81 @@
+.testimonials {
+  background-color: #f9f7f4;
+  padding: 100px 8%;
+  text-align: center;
+}
+
+.testimonials-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+
+.testimonials-subtitle {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 60px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: 15px;
+  padding: 40px 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid var(--accent);
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.quote {
+  font-size: 3rem;
+  color: var(--accent);
+  opacity: 0.3;
+  position: absolute;
+  top: 15px;
+  left: 25px;
+}
+
+.text {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+.author h3 {
+  color: var(--secondary);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.author span {
+  display: block;
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 70px 5%;
+  }
+
+  .testimonial-card {
+    padding: 30px 20px;
+  }
+}
