@@ -6,6 +6,7 @@ import Services from "./pages/Services";
 import Booking from "./pages/Booking";
 import Contact from "./pages/Contact";
 import Gallery from "./pages/Gallery";
+import AboutUs from "./pages/AboutUs";
 import "./styles/main.css";
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/booking" element={<Booking />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
       </main>
       <Footer />
