@@ -1,11 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/gallery.css";
+import img1 from "../assets/img1.jpg";
+import img2 from "../assets/img2.jpg";
+import img3 from "../assets/img3.jpg";
+import img4 from "../assets/img4.jpg";
+import img5 from "../assets/img5.jpg";
+import img6 from "../assets/img6.jpg";
+import img7 from "../assets/img7.jpg";
+import video1 from "../assets/video1.mp4";
 
 // --- IMAGE & VIDEO DATA ---
 const IMAGES = [
   {
     id: 1,
-    src: "/public/assets/img1.jpg",
+    src: img1,
     title: "State-of-the-Art 3T MRI",
     category: "Machines",
     tagline: "Unparalleled clarity for precise diagnosis.",
@@ -14,7 +22,7 @@ const IMAGES = [
   },
   {
     id: 2,
-    src: "/public/assets/img2.jpg",
+    src: img2,
     title: "Advanced Pathology Lab",
     category: "Labs",
     tagline: "Accuracy you can trust, managed by expert pathologists.",
@@ -23,7 +31,7 @@ const IMAGES = [
   },
   {
     id: 3,
-    src: "/public/assets/img3.jpg",
+    src: img3,
     title: "Low-Dose CT Imaging Suite",
     category: "Machines",
     tagline: "Reduced radiation, maximized diagnostic yield.",
@@ -32,7 +40,7 @@ const IMAGES = [
   },
   {
     id: 4,
-    src: "/public/assets/img4.jpg",
+    src: img4,
     title: "Elegant Patient Reception",
     category: "Reception",
     tagline: "A comfortable and calm start to your visit.",
@@ -41,7 +49,7 @@ const IMAGES = [
   },
   {
     id: 5,
-    src: "/public/assets/img5.jpg",
+    src: img5,
     title: "4D High-Resolution Ultrasound",
     category: "Machines",
     tagline: "Dynamic imaging for early and detailed screening.",
@@ -50,7 +58,7 @@ const IMAGES = [
   },
   {
     id: 6,
-    src: "/public/assets/img6.jpg",
+    src: img6,
     title: "Sterile Phlebotomy Bay",
     category: "Labs",
     tagline: "Comfort and hygiene in every sample collection.",
@@ -59,7 +67,7 @@ const IMAGES = [
   },
   {
     id: 7,
-    src: "/public/assets/img7.jpg",
+    src: img7,
     title: "Our Expert Team at Work",
     category: "Staff",
     tagline: "Compassion meets world-class expertise.",
@@ -74,7 +82,7 @@ const VIDEOS = [
   {
     id: 1,
     title: "A Tour of Our Center & Advanced Technology",
-    url: "/public/assets/video1.mp4",
+    url: video1,
     description:
       "Watch a brief walkthrough to see our commitment to technology and patient comfort in action. Understand what makes our center the benchmark for diagnostic excellence in the region.",
   },
