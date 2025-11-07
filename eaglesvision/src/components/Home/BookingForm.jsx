@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/bookingform.css";
+import "../../styles/bookingform.css";
 
 const BookingForm = () => {
   const [formData, setFormData] = useState({
