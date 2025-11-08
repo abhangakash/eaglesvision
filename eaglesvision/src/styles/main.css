@@ -1,43 +1,66 @@
-/* === Main Global Styles === */
+/* ===== Global Layout Foundation ===== */
 
-/* Variables */
-:root {
-  --gold: #c3a052;
-  --dark: #1a1a1a;
-  --text: #333;
-  --bg: #fafafa;
-  --transition: all 0.3s ease;
-}
-
-/* Reset */
-* {
+/* Make all sections span full width */
+html, body {
+  width: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden; /* Prevent unwanted horizontal scroll */
+}
+
+/* Ensure every section and block fills width properly */
+section, header, footer, nav, main, div {
+  width: 100%;
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  scroll-behavior: smooth;
+/* Global container for centered content (optional) */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-h1, h2, h3, h4 {
-  font-family: "Playfair Display", serif;
+/* Images and media never overflow their container */
+img, video, iframe {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
-a {
-  text-decoration: none;
-  transition: var(--transition);
+/* Responsive text wrapping and scaling */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+/* Basic responsive layout behavior */
+@media (max-width: 1024px) {
+  .container {
+    width: 95%;
+  }
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--gold);
-  border-radius: 5px;
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 1rem;
+  }
+  section {
+    padding: 2rem 0;
+  }
 }
+
+/* Utility helpers */
+.full-width {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+/* Add space so page content isn't hidden behind fixed navbar */
