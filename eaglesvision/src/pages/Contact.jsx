@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/contact.css";
-import logo from "../assets/logo.PNG";
+import logo from "../assets/logo.png";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
