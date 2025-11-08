@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaHome, FaServicestack, FaInfoCircle, FaImages, FaBook, FaPhone } from "react-icons/fa";
-import logo from "../assets/logo.PNG"; // Import your logo file
+import logo from "../assets/logo.png"; // Import your logo file
 import "../styles/navbar.css";
 
 const Navbar = () => {
@@ -14,6 +14,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  
   const closeMenu = () => setMenuOpen(false);
 
   return (

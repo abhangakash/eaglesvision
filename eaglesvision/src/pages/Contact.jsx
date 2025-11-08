@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/contact.css";
-import logo from "../assets/logo.PNG";
+import logo from "../assets/logo.png";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -63,6 +63,7 @@ export default function Contact() {
           <li><i className="fa-solid fa-house-medical"></i> Home Sample Collection</li>
         </ul>
       </div>
+
 
       {/* Main Content */}
       <div className="contact-main-content">
