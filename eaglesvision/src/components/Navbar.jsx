@@ -14,6 +14,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  
   const closeMenu = () => setMenuOpen(false);
 
   return (

@@ -64,6 +64,7 @@ export default function Contact() {
         </ul>
       </div>
 
+
       {/* Main Content */}
       <div className="contact-main-content">
         {/* Form */}
