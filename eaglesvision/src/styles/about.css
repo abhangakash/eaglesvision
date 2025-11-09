@@ -29,7 +29,7 @@
 
 /* History Section */
 .about-history {
-  border-top: 3px solid #38b6ff;
+  border-top: 3px solid #00314d;
   padding-top: 2.5rem;
   margin-bottom: 3.5rem;
 }
@@ -37,7 +37,7 @@
 .about-history h2 {
   font-size: 2rem;
   font-weight: 600;
-  color: #1a3e5b;
+  color: #001b32;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -59,7 +59,7 @@
 .about-team h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #1a3e5b;
+  color: #036;
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -78,7 +78,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background: #f8fbff;
+  background: white;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(56, 182, 255, 0.15);
   padding: 2.4rem 1.8rem;
@@ -95,14 +95,15 @@
 
 .team-icon {
   font-size: 3.8rem;
-  color: #38b6ff;
+  color: rgb(8, 149, 154);
+  
   margin-bottom: 1.2rem;
 }
 
 .team-card h3 {
   font-weight: 700;
   font-size: 1.3rem;
-  color: #1a3e5b;
+  color: #036;
   margin-bottom: 0.4rem;
 }
 

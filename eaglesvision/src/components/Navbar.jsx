@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaHome, FaServicestack, FaInfoCircle, FaImages, FaBook, FaPhone } from "react-icons/fa";
-import logo from "../assets/logo.png"; // Import your logo file
+import { FaHome, FaStethoscope, FaRegImages, FaEnvelope, FaInfoCircle } from "react-icons/fa";
+import logo from "../assets/logo.png";
 import "../styles/navbar.css";
+
+const navLinks = [
+  { path: "/", name: "Home", icon: <FaHome /> },
+  { path: "/services", name: "Services", icon: <FaStethoscope /> },  // Changed service icon
+  { path: "/aboutus", name: "About", icon: <FaInfoCircle /> },
+  { path: "/gallery", name: "Gallery", icon: <FaRegImages /> },
+  { path: "/contact", name: "Contact", icon: <FaEnvelope /> }
+];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,42 +22,58 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  
   const closeMenu = () => setMenuOpen(false);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+  }, [menuOpen]);
+
   return (
-    <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
-      <div className="navbar-container">
-        <Link to="/" className="logo" onClick={closeMenu}>
-          {/* Show logo image on mobile, text on desktop */}
-          <span className="logo-img-wrap">
-            <img src={logo} alt="Eagle's Vision Diagnostics Logo" className="logo-img" />
-          </span>
-          <span className="logo-text">
-            <span className="logo-main">EaglesVision</span> Diagnostics
-          </span>
-        </Link>
+    <>
+      <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
+        <div className="navbar-container">
+          {/* Logo always visible */}
+          <Link to="/" className="logo" onClick={closeMenu}>
+            <span className="logo-img-wrap">
+              <img src={logo} alt="Eagle's Vision Diagnostics Logo" className="logo-img" />
+            </span>
+            <span className="logo-text">
+              <span className="logo-main">Eagle's Vision Diagnostics</span>
+            </span>
+          </Link>
 
-        <button
-          className={`hamburger ${menuOpen ? "active" : ""}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle Menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+          {/* Hamburger */}
+          <button
+            className={`hamburger ${menuOpen ? "active" : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle Menu"
+            tabIndex={0}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
 
-        <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-          <NavLink to="/" end onClick={closeMenu}><FaHome /> <span>Home</span></NavLink>
-          <NavLink to="/services" onClick={closeMenu}><FaServicestack /> <span>Services</span></NavLink>
-          <NavLink to="/aboutus" onClick={closeMenu}><FaInfoCircle /> <span>About</span></NavLink>
-          <NavLink to="/gallery" onClick={closeMenu}><FaImages /> <span>Gallery</span></NavLink>
-          <NavLink to="/booking" onClick={closeMenu}><FaBook /> <span>Book</span></NavLink>
-          <NavLink to="/contact" onClick={closeMenu}><FaPhone /> <span>Contact</span></NavLink>
-        </nav>
-      </div>
-    </header>
+          {/* Nav links with icons */}
+          <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
+            {/* Removed close button for simplicity as requested */}
+            {navLinks.map(link => (
+              <NavLink key={link.name} to={link.path} end onClick={closeMenu}>
+                <span className="nav-icon">{link.icon}</span>
+                {link.name}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
+      </header>
+      {/* Overlay behind menu */}
+      <div
+        className={`mobile-overlay${menuOpen ? " active" : ""}`}
+        onClick={closeMenu}
+        tabIndex={-1}
+        aria-label="Close overlay"
+      />
+    </>
   );
 };
 

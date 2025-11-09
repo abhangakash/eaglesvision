@@ -144,7 +144,8 @@ export default function Booking() {
       <div className="booking-container">
         <h2 className="booking-title">Book an Appointment</h2>
         <p className="booking-subtitle">
-          Please fill in all mandatory fields (<span style={{color: 'red'}}>*</span>)
+          Schedule your diagnostic test with our experienced team. We'll confirm your appointment via WhatsApp.
+          
         </p>
 
         {isSubmitSuccessful && (
