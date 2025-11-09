@@ -1,66 +1,7 @@
-/* ===== Global Layout Foundation ===== */
-
-/* Make all sections span full width */
+/* 
 html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevent unwanted horizontal scroll */
-}
-
-/* Ensure every section and block fills width properly */
-section, header, footer, nav, main, div {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Global container for centered content (optional) */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-/* Images and media never overflow their container */
-img, video, iframe {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/* Responsive text wrapping and scaling */
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-  padding: 0;
-  word-wrap: break-word;
-}
-
-/* Basic responsive layout behavior */
-@media (max-width: 1024px) {
-  .container {
-    width: 95%;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    width: 100%;
-    padding: 0 1rem;
-  }
-  section {
-    padding: 2rem 0;
-  }
-}
-
-/* Utility helpers */
-.full-width {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.text-center {
-  text-align: center;
-}
-/* Add space so page content isn't hidden behind fixed navbar */
+  overflow-x: hidden; 
+} */

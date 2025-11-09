@@ -1,55 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/hero.css";
+// ✅ Import local images from src/assets
+import lab1 from "../../assets/lab1.jpeg";
+import lab2 from "../../assets/lab2.webp";
+import lab3 from "../../assets/lab3.avif";
 
-// ✅ Correct imports for images inside src/assets
-import img1 from "../../assets/img4.JPG";
-import img2 from "../../assets/img3.JPG";
-import img3 from "../../assets/img6.JPG";
-
-const SLIDES = [img1, img2, img3];
 const HeroSection = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const images = [lab1, lab2, lab3]; // array of images
+  const [current, setCurrent] = useState(0);
 
+  // Change image every 5 seconds
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
-    }, 6000); // Change slide every 6 seconds
-    return () => clearInterval(intervalId);
-  }, []);
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
-    <section className="hero-section slideshow-container">
-      {SLIDES.map((img, idx) => (
+    <section className="hero-section">
+      {/* Slider */}
+      {images.map((img, index) => (
         <div
-          key={idx}
-          className={`slide ${currentSlide === idx ? "active" : ""}`}
+          key={index}
+          className={`slide ${index === current ? "active" : ""}`}
           style={{ backgroundImage: `url(${img})` }}
-          aria-hidden={currentSlide !== idx}
-        />
+        ></div>
       ))}
 
-      <div className="hero-overlay"></div>
+      {/* Overlay for darkening */}
+      <div className="overlay"></div>
 
-      <div className="hero-content container">
-        <h1 className="hero-title">
-          Eagle’s Vision <span>Diagnostics Center</span>
-        </h1>
-        <p className="hero-tagline">
-          Clarity Defines Quality — Advanced Diagnostic Solutions to Empower Your Health.
-        </p>
-        <p className="hero-subtagline">
-          Offering Digital X-Ray, Portable X-Ray, Pathology Lab, and Home Sample Collection services with precision and care.
-        </p>
-        <div className="hero-cta-wrapper">
-          <a href="/booking" className="btn btn-primary" aria-label="Book an appointment">
-            Book Appointment
-          </a>
-          <a href="/services" className="btn btn-secondary" aria-label="View our services">
-            Explore Services
-          </a>
-          <a href="/contact" className="btn btn-tertiary" aria-label="Contact us today">
-            Contact Us
-          </a>
+      {/* White box content */}
+      <div className="hero-content">
+        <div className="hero-box">
+          <h1 className="brand-title">Eagle’s Vision Diagnostics Center</h1>
+          <p className="brand-tagline">
+            Precision · Trust · Excellence in Every Diagnosis
+          </p>
+          <div className="hero-buttons">
+            <button className="btn primary">Book Appointment</button>
+            <button className="btn secondary">Explore Services</button>
+            <button className="btn outline">Contact</button>
+          </div>
         </div>
       </div>
     </section>
