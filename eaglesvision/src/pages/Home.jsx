@@ -7,7 +7,7 @@ import BookingForm from "../components/Home/BookingForm";
 import Testimonials from "../components/Home/Testimonials";
 import Gallery from "../components/Home/Gallery";
 import ContactSection from "../components/Home/ContactSection";
-//import "../styles/home.css"; // optional global styles for layout spacing
+import ServicesShowcase from "../components/Home/ServicesShowcase";
 
 const Home = () => {
   return (
@@ -15,12 +15,17 @@ const Home = () => {
       {/* Hero Banner */}
       <HeroSection />
 
+      {/* ✨ Floating Auto-Scrolling Services Showcase */}
+      <section className="home-section light-bg">
+        <ServicesShowcase />
+      </section>
+
       {/* About Section */}
       <section className="home-section">
         <AboutSection />
       </section>
 
-      {/* Services */}
+      {/* Full Services Page Preview */}
       <section className="home-section light-bg">
         <ServicesSection />
       </section>

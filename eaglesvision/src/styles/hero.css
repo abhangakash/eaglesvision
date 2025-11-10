@@ -1,113 +1,142 @@
-.hero-section {
+.hero-modern {
   position: relative;
-  height: 100vh;
-  width: 100%;
+  min-height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e0f3ff 0%, #f8fdff 100%);
+  color: #04376a;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  padding: 2rem;
   overflow: hidden;
-  font-family: "Arial", sans-serif;
 }
 
-/* Slider */
-.slide {
+/* Soft floating background lines */
+.wave-stripes {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
-  background-position: center;
-  background-size: cover;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(4, 55, 106, 0.04),
+    rgba(4, 55, 106, 0.04) 15px,
+    rgba(4, 55, 106, 0.08) 15px,
+    rgba(4, 55, 106, 0.08) 30px
+  );
+  animation: stripeMove 12s linear infinite;
   z-index: 1;
 }
 
-.slide.active {
-  opacity: 1;
+@keyframes stripeMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 1200px 0; }
 }
 
-/* Overlay dark layer */
-.overlay {
+/* Glowing molecular dots style */
+.hero-network {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 2;
-}
-
-/* Content box */
-.hero-content {
-  position: absolute;
+  height: 100%;
+  max-height: 400px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 3;
-  width: 90%;
-  max-width: 800px;
+  stroke: rgba(4, 55, 106, 0.2);
+  stroke-width: 1.5;
+  fill: rgba(173, 216, 230, 0.25);
+  filter: drop-shadow(0 0 8px rgba(0, 119, 182, 0.3));
+  animation: pulseNetwork 10s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes pulseNetwork {
+  0%, 100% { fill-opacity: 0.4; stroke-opacity: 0.25; }
+  50% { fill-opacity: 0.2; stroke-opacity: 0.15; }
+}
+
+.hero-content-modern {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
   text-align: center;
+  backdrop-filter: blur(5px);
 }
 
-.hero-box {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 40px 30px;
-  border-radius: 10px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+.hero-title-modern {
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #012f56;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
 }
 
-.brand-title {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  color: #222;
+.hero-tagline-modern {
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2.8vw, 1.6rem);
+  margin-bottom: 2rem;
+  color: #0b4b7e;
+  opacity: 0.9;
 }
 
-.brand-tagline {
-  font-size: 1.2rem;
-  margin-bottom: 25px;
-  color: #555;
-}
-
-/* Buttons */
-.hero-buttons {
+.hero-buttons-modern {
   display: flex;
+  gap: 1.2rem;
   justify-content: center;
-  gap: 15px;
   flex-wrap: wrap;
 }
 
-.btn {
-  padding: 12px 25px;
+/* Buttons */
+.btn-modern {
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  font-weight: 600;
   font-size: 1rem;
-  border-radius: 5px;
   cursor: pointer;
-  border: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
-.btn.primary {
-  background-color: #007bff;
+.btn-modern.primary {
+  background-color: #0077b6;
+  color: white;
+  box-shadow: 0 4px 18px rgba(0, 119, 182, 0.4);
+}
+.btn-modern.primary:hover {
+  background-color: white;
+  color: #0077b6;
+  border-color: #0077b6;
+}
+
+.btn-modern.secondary {
+  background-color: white;
+  color: #0077b6;
+  border: 2px solid #0077b6;
+}
+.btn-modern.secondary:hover {
+  background-color: #0077b6;
   color: white;
 }
 
-.btn.primary:hover {
-  background-color: #0056b3;
-}
-
-.btn.secondary {
-  background-color: #28a745;
-  color: white;
-}
-
-.btn.secondary:hover {
-  background-color: #1e7e34;
-}
-
-.btn.outline {
+.btn-modern.outline {
   background: transparent;
-  border: 2px solid #007bff;
-  color: #007bff;
+  border: 2px solid #0077b6;
+  color: #0077b6;
+}
+.btn-modern.outline:hover {
+  background-color: #0077b6;
+  color: white;
 }
 
-.btn.outline:hover {
-  background: #007bff;
-  color: white;
+/* Responsive tweaks */
+@media (max-width: 720px) {
+  .hero-modern {
+    padding: 1.5rem;
+  }
+  .hero-buttons-modern {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
