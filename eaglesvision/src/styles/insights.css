@@ -1,0 +1,204 @@
+/* Base Styles & Variables */
+:root {
+  --primary-color: #007bff; 
+  --text-dark: #1f2a37;
+  --text-light: #4b5563;
+  --border-color: #e5e7eb;
+  --bg-light: #f9fafb;
+  --spacing-unit: 1.5rem;
+}
+
+.list-insights-section {
+  padding: calc(3 * var(--spacing-unit)) 0;
+  background-color: #ffffff;
+}
+
+.list-insights-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-unit);
+}
+
+/* --- Header Section --- */
+.list-insights-header {
+  text-align: left;
+  margin-bottom: calc(2 * var(--spacing-unit));
+}
+
+.section-tag-list {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.list-insights-header h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--text-dark);
+}
+
+/* --- Content Grid Setup --- */
+.content-list-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Stacked on mobile */
+  gap: calc(2 * var(--spacing-unit));
+}
+
+/* --- 1. Featured Insight (Pillar Style) --- */
+.featured-pillar {
+  display: block;
+  text-decoration: none;
+  padding: 2rem;
+  background-color: var(--bg-light); /* Light background, no hard box border */
+  border-left: 5px solid var(--primary-color); /* Strong vertical emphasis */
+  color: var(--text-dark);
+  transition: background-color 0.3s ease;
+}
+
+.featured-pillar:hover {
+  background-color: #edf2f7;
+}
+
+.pillar-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.featured-pillar h3 {
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.pillar-summary {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+.pillar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.featured-pillar:hover .pillar-link svg {
+  transform: translateX(5px);
+  transition: transform 0.3s ease;
+}
+
+
+/* --- 2. Minimalist Divided List --- */
+.minimalist-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: var(--text-dark);
+  padding: 1.25rem 0; /* Padding creates the separation */
+  border-bottom: 1px solid var(--border-color); /* The defining line */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.list-item:hover {
+  background-color: var(--bg-light);
+  padding-left: 0.5rem; /* Subtle hover shift */
+}
+
+.list-item:first-child {
+  border-top: 1px solid var(--border-color); /* Top line for the list */
+}
+
+.list-item h4 {
+  flex-grow: 1; /* Allows title to take available space */
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+  padding-right: 1rem;
+}
+
+.list-meta {
+  display: none; /* Hide date meta on mobile to keep it tight */
+  /* Re-enable on desktop */
+}
+
+.list-arrow {
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.list-item:hover .list-arrow {
+  transform: translateX(5px);
+}
+
+/* --- Footer CTA --- */
+.insights-footer-cta {
+    text-align: left;
+    margin-top: calc(2 * var(--spacing-unit));
+}
+
+.view-all-list-button {
+  display: inline-block;
+  background-color: #ffffff;
+  color: var(--primary-color);
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.view-all-list-button:hover {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+/* ======================================================= */
+/* DESKTOP LAYOUT (768px+)             */
+/* ======================================================= */
+@media (min-width: 768px) {
+  .content-list-grid {
+    /* Use the asymmetrical grid for desktop */
+    grid-template-columns: 2fr 3fr; /* Featured takes 40%, List takes 60% */
+    gap: calc(3 * var(--spacing-unit));
+  }
+  
+  .featured-pillar {
+    padding: 2.5rem;
+  }
+  
+  .list-item {
+    justify-content: flex-start;
+  }
+
+  .list-meta {
+    /* Re-enable date meta on desktop */
+    display: flex; 
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    min-width: 150px; /* Allocate space for the date */
+  }
+
+  .list-item h4 {
+    padding-right: 2rem;
+    margin-left: 1rem;
+  }
+}

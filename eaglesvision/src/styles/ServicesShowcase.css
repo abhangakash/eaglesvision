@@ -4,7 +4,8 @@
 .scroll-container {
   overflow: hidden;
   width: 100%;
-  margin-top: 20px;
+  padding-top: 20px;
+  background-color: white;
 }
 
 /* The content scrolls continuously */

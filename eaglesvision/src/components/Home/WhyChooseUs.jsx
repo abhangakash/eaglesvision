@@ -1,48 +1,73 @@
-import React from "react";
-import "../../styles/whychooseus.css";
+import React from 'react';
+import { FaGraduationCap, FaCogs, FaClock, FaCheckCircle, FaUserShield } from 'react-icons/fa';
+import '../../styles/whychooseus.css';
 
-const WhyChooseUs = () => {
-  const reasons = [
+const features = [
     {
-      title: "Accurate Results",
-      description: "We use advanced diagnostic equipment to ensure precise and reliable results every time.",
-      icon: "🎯",
+        icon: <FaGraduationCap />,
+        title: "Certified Specialist Team",
+        description: "Our HODs and lab directors are highly qualified experts, ensuring every test and report meets strict professional standards.",
+        tag: "Expertise First",
     },
     {
-      title: "Experienced Specialists",
-      description: "Our doctors and lab experts have decades of experience in pathology and imaging.",
-      icon: "👩‍⚕️",
+        icon: <FaCogs />,
+        title: "Advanced Digital Technology",
+        description: "We utilize cutting-edge equipment for Digital X-Ray and Pathology, providing superior accuracy and clarity in every result.",
+        tag: "High Precision",
     },
     {
-      title: "Quick Turnaround",
-      description: "Get your reports within hours with our smart automated processing systems.",
-      icon: "⚡",
+        icon: <FaClock />,
+        title: "Guaranteed Timely Results",
+        description: "Receive your reports quickly and securely through our online patient portal, enabling faster next steps in your care.",
+        tag: "Patient Convenience",
     },
     {
-      title: "Luxury & Care",
-      description: "Enjoy a clean, calm, and premium facility designed for your comfort and care.",
-      icon: "💎",
+        icon: <FaUserShield />,
+        title: "Home Collection & Portable X-Ray",
+        description: "Access diagnostic services from the comfort of your home, including sample collection and on-site portable X-Ray services.",
+        tag: "Maximized Accessibility",
     },
-  ];
+];
 
-  return (
-    <section className="whychooseus" id="whychooseus">
-      <div className="why-container">
-        <h2 className="why-title">Why Choose Us</h2>
-        <p className="why-subtitle">Your health deserves accuracy, comfort, and trust.</p>
+const WhyChooseUsSection = () => {
+    return (
+        <section className="why-choose-us-section">
+            <div className="wcu-wrapper">
+                
+                {/* Header and Value Proposition */}
+                <div className="wcu-header">
+                    <span className="section-tag-wcu">Your Health, Our Priority</span>
+                    <h2>The EaglesVision Difference: **Accuracy Meets Care**</h2>
+                    <p>
+                        Choosing a diagnostic center is choosing trust. We differentiate ourselves through unmatched clinical **precision**, investment in **technology**, and a truly **patient-centric** service model.
+                    </p>
+                </div>
 
-        <div className="why-grid">
-          {reasons.map((reason, index) => (
-            <div className="why-card" key={index}>
-              <div className="why-icon">{reason.icon}</div>
-              <h3>{reason.title}</h3>
-              <p>{reason.description}</p>
+                {/* Features Grid */}
+                <div className="wcu-features-grid">
+                    {features.map((feature, index) => (
+                        <div key={index} className="wcu-feature-card">
+                            <div className="wcu-icon-box">{feature.icon}</div>
+                            <div className="wcu-text-content">
+                                <span className="wcu-tag">{feature.tag}</span>
+                                <h4>{feature.title}</h4>
+                                <p>{feature.description}</p>
+                                <FaCheckCircle className="check-mark" />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Footer CTA */}
+                <div className="wcu-footer-cta">
+                    <p>Ready to experience diagnostics defined by quality?</p>
+                    <a href="/booking" className="wcu-cta-button">
+                        Book Your Appointment Today
+                    </a>
+                </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 };
 
-export default WhyChooseUs;
+export default WhyChooseUsSection;
