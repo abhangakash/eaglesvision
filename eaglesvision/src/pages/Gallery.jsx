@@ -222,8 +222,7 @@ export default function Gallery() {
         </div>
       )}
 
-      {/* BACK TO TOP */}
-      <button className={`back-to-top ${showTop ? "visible" : ""}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>↑</button>
+      
     </section>
   );
 }
