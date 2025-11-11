@@ -1,11 +1,4 @@
-/* --- Global Styles & Variables --- */
-:root {
-    --primary-blue: #1a237e; /* Deep Header Blue */
-    --accent-blue: #007bff;
-    --text-color: #333;
-    --light-bg: #f7f9fc;
-    --border-color: #eee;
-}
+
 
 body {
     background-color: var(--light-bg);
