@@ -1,0 +1,275 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-blue: #1a237e; /* Deep Header Blue */
+    --accent-blue: #007bff;
+    --text-color: #333;
+    --light-bg: #f7f9fc;
+    --border-color: #eee;
+}
+
+body {
+    background-color: var(--light-bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+.blog-page-container, .blog-post-container {
+    padding: 30px 20px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- 1. Blog List Header --- */
+.blog-list-header {
+    text-align: center;
+    padding: 40px 0 60px;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 40px;
+}
+
+.header-icon-main {
+    font-size: 2.5em;
+    color: var(--accent-blue);
+    margin-bottom: 15px;
+}
+
+.blog-list-header h1 {
+    font-size: 3em;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+}
+
+.blog-list-header p {
+    font-size: 1.1em;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- 2. Blog Posts Grid (Listing Page) --- */
+.blog-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 30px;
+}
+
+.blog-card-link {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 5px solid var(--accent-blue);
+}
+
+.blog-card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-top-color: var(--primary-blue);
+}
+
+.blog-card-content {
+    padding: 25px;
+    flex-grow: 1;
+}
+
+.blog-category-tag {
+    font-size: 0.8em;
+    font-weight: 700;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.blog-card-content h3 {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: var(--primary-blue);
+}
+
+.blog-card-content p {
+    font-size: 0.95em;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.blog-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.meta-date, .meta-read {
+    font-size: 0.85em;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.meta-date svg {
+    margin-right: 5px;
+    color: var(--accent-blue);
+}
+
+.meta-read {
+    color: var(--accent-blue);
+}
+
+.meta-read svg {
+    margin-left: 5px;
+}
+
+
+/* --- 3. Individual Blog Post Styles --- */
+.blog-post-container {
+    max-width: 800px; /* Narrower container for readability */
+}
+
+.back-to-blog {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--accent-blue);
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.back-to-blog svg {
+    margin-right: 8px;
+}
+
+.blog-post-article {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.post-title {
+    font-size: 2.5em;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.post-meta-line {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    color: #999;
+    font-size: 0.9em;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+}
+
+.meta-item svg {
+    margin-right: 5px;
+    color: var(--accent-blue);
+}
+
+.post-featured-image {
+    width: 100%;
+    height: 350px; /* Placeholder for image */
+    background-color: #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    color: #6c757d;
+}
+
+.post-body h3, .post-body h4 {
+    color: var(--primary-blue);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.post-body p {
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.conclusion-note {
+    font-style: italic;
+    padding: 15px;
+    border-left: 4px solid var(--accent-blue);
+    background-color: #f8f9fa;
+}
+
+.post-footer-cta {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: var(--primary-blue);
+    color: white;
+    border-radius: 8px;
+}
+
+.post-footer-cta p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.post-cta-button {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #28a745; /* Green CTA */
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.post-cta-button:hover {
+    background-color: #1e7e34;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 992px) {
+    .blog-posts-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
+    }
+    .blog-list-header h1 {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 600px) {
+    .blog-posts-grid {
+        grid-template-columns: 1fr; /* Single column on phones */
+    }
+    .blog-list-header h1 {
+        font-size: 1.8em;
+    }
+    .blog-post-container {
+        padding: 20px 10px;
+    }
+    .post-title {
+        font-size: 2em;
+    }
+    .post-meta-line {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .blog-post-article {
+        padding: 25px;
+    }
+}

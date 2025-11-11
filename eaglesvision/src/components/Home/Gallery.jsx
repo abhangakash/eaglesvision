@@ -1,37 +1,39 @@
 import React from "react";
-import "../../styles/gallery.css";
+import { Link } from "react-router-dom";
+import "../../styles/homegallery.css";
 
-const Gallery = () => {
-  const images = [
-    { src: "/images/lab1.jpg", alt: "Modern Lab" },
-    { src: "/images/lab2.jpg", alt: "MRI Room" },
-    { src: "/images/lab3.jpg", alt: "CT Scan Equipment" },
-    { src: "/images/lab4.jpg", alt: "Pathology Team" },
-    { src: "/images/lab5.jpg", alt: "Reception Area" },
-    { src: "/images/lab6.jpg", alt: "Diagnostic Room" },
-  ];
+import img1 from "../../assets/img1.JPG";
+import img2 from "../../assets/img2.JPG";
+import img3 from "../../assets/img3.JPG";
+import img4 from "../../assets/img4.JPG";
+import img5 from "../../assets/img5.JPG";
+import img6 from "../../assets/img6.JPG";
 
+const images = [img1, img2, img3, img4, img5, img6];
+
+const HomeGallery = () => {
   return (
-    <section className="gallery" id="gallery">
-      <div className="gallery-container">
-        <h2 className="gallery-title">Our Facility Gallery</h2>
-        <p className="gallery-subtitle">
-          Take a glimpse inside our world-class diagnostic center.
-        </p>
+    <section className="home-gallery">
+      <div className="home-gallery-header">
+        <h2>Inside Our World-Class Facilities</h2>
+        <p>Where innovation meets precision — a glimpse into our trusted lab environment.</p>
+      </div>
 
-        <div className="gallery-grid">
-          {images.map((img, index) => (
-            <div className="gallery-item" key={index}>
-              <img src={img.src} alt={img.alt} />
-              <div className="overlay">
-                <span>{img.alt}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className="home-gallery-scroll">
+        {images.map((img, i) => (
+          <div className="home-gallery-item" key={i}>
+            <img src={img} alt={`Gallery ${i + 1}`} loading="lazy" />
+          </div>
+        ))}
+      </div>
+
+      <div className="home-gallery-cta">
+        <Link to="/gallery" className="home-gallery-btn">
+          View Full Gallery →
+        </Link>
       </div>
     </section>
   );
 };
 
-export default Gallery;
+export default HomeGallery;

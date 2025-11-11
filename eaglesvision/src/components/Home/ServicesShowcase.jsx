@@ -15,6 +15,13 @@ const services = [
   { name: "Blood Test", img: bloodtest },
   { name: "CT Scan", img: ctscan },
   { name: "MRI", img: mri },
+   { name: "Pathology", img: pathology },
+  { name: "X-Ray", img: xray },
+  { name: "ECG", img: ecg },
+  { name: "Ultrasound", img: ultrasound },
+  { name: "Blood Test", img: bloodtest },
+  { name: "CT Scan", img: ctscan },
+  { name: "MRI", img: mri },
 ];
 
 const ServicesShowcase = () => {

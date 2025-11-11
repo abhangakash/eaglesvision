@@ -1,0 +1,73 @@
+.accreditation-section {
+  padding: 60px 20px;
+  background: #f9fbff;
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 40px;
+}
+
+.accreditation-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.accreditation-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+  padding: 30px 20px;
+  width: 300px;
+  transition: all 0.3s ease;
+  border-top: 4px solid #003366;
+}
+
+.accreditation-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0, 51, 102, 0.2);
+  border-top-color: #0055cc;
+}
+
+.accreditation-icon {
+  font-size: 2.5rem;
+  color: #0055cc;
+  margin-bottom: 15px;
+}
+
+.accreditation-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #002b5b;
+  margin-bottom: 10px;
+}
+
+.accreditation-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .accreditation-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .accreditation-card {
+    width: 90%;
+  }
+}

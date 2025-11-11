@@ -7,6 +7,8 @@ import Booking from "./pages/Booking";
 import Contact from "./pages/Contact";
 import Gallery from "./pages/Gallery";
 import AboutUs from "./pages/Aboutus";
+import Blog from "./pages/Blog";
+import BottomNav from "./components/BottomNav";
 import "./styles/main.css";
 
 export default function App() {
@@ -21,8 +23,15 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/blog/:slug" element={<Blog />} />
         </Routes>
       </main>
+
+      {/* ✅ Bottom Navbar visible only on mobile */}
+      <div className="mobile-bottom-nav">
+        <BottomNav />
+      </div>
+
       <Footer />
     </Router>
   );

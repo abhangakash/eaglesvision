@@ -1,81 +1,150 @@
-.testimonials {
-  background-color: #f9f7f4;
-  padding: 100px 8%;
-  text-align: center;
+/* --- Section Base --- */
+.testimonials-home-section {
+    padding: 80px 20px;
+    background-color: #ffffff; /* White background for clean look */
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    border-bottom: 1px solid #eee;
 }
 
-.testimonials-title {
-  font-family: "Playfair Display", serif;
-  font-size: 2.2rem;
-  color: var(--secondary);
-  margin-bottom: 10px;
+.testimonials-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.testimonials-subtitle {
-  color: #666;
-  font-size: 1rem;
-  margin-bottom: 60px;
+/* --- Header --- */
+.testimonials-header {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
+.section-subtitle-testimonial {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #f7a048; /* Warm accent color (e.g., gold/orange) */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.testimonials-header h2 {
+    font-size: 2.5em;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #1a237e; /* Deep Blue Header */
+}
+
+.testimonials-header p {
+    font-size: 1.05em;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- Testimonials Grid --- */
 .testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
+    gap: 30px;
 }
 
 .testimonial-card {
-  background: white;
-  border-radius: 15px;
-  padding: 40px 25px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-  position: relative;
-  overflow: hidden;
-  border-top: 4px solid var(--accent);
-  transition: all 0.3s ease;
+    background: #f9f9f9; /* Off-white card background */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensures cards have the same height */
+    transition: transform 0.3s ease;
 }
 
 .testimonial-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.quote {
-  font-size: 3rem;
-  color: var(--accent);
-  opacity: 0.3;
-  position: absolute;
-  top: 15px;
-  left: 25px;
+.quote-icon {
+    font-size: 2em;
+    color: #007bff; /* Primary Blue accent */
+    margin-bottom: 15px;
 }
 
-.text {
-  font-size: 1rem;
-  color: #444;
-  margin-bottom: 30px;
-  line-height: 1.6;
-  margin-top: 15px;
+.rating-stars {
+    margin-bottom: 15px;
+    color: #f7a048; /* Gold color for stars */
 }
 
-.author h3 {
-  color: var(--secondary);
-  font-size: 1.1rem;
-  font-weight: 600;
+.star-filled {
+    color: #f7a048; 
 }
 
-.author span {
-  display: block;
-  color: #888;
-  font-size: 0.9rem;
-  margin-top: 4px;
+.star-empty {
+    color: #ddd; /* Light grey for unrated stars */
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .testimonials {
-    padding: 70px 5%;
-  }
+.quote-text {
+    font-size: 1em;
+    line-height: 1.7;
+    color: #444;
+    font-style: italic;
+    flex-grow: 1; /* Pushes the name/source to the bottom */
+}
 
-  .testimonial-card {
-    padding: 30px 20px;
-  }
+.patient-info {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.patient-name {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin: 0 0 3px 0;
+    color: #1a237e;
+}
+
+.patient-source {
+    font-size: 0.85em;
+    color: #777;
+    display: block;
+}
+
+/* --- Footer CTA --- */
+.testimonials-footer-cta {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.all-reviews-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px; /* Pill shape */
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.all-reviews-button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 992px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr; /* Single column on phones */
+    }
+    .testimonials-header h2 {
+        font-size: 2em;
+    }
 }

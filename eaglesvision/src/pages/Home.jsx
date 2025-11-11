@@ -5,9 +5,12 @@ import ServicesSection from "../components/Home/ServicesSection";
 import WhyChooseUs from "../components/Home/WhyChooseUs";
 import BookingForm from "../components/Home/BookingForm";
 import Testimonials from "../components/Home/Testimonials";
-import Gallery from "../components/Home/Gallery";
-import ContactSection from "../components/Home/ContactSection";
+import Gallery1 from "../components/Home/Gallery";
+//import ContactSection from "../components/Home/ContactSection";
 import ServicesShowcase from "../components/Home/ServicesShowcase";
+import AccreditationSection from "../components/Home/AccreditationSection";
+import Insights from "../components/Home/insights";
+import Gallery from  "../components/Home/Gallery";
 
 const Home = () => {
   return (
@@ -25,19 +28,19 @@ const Home = () => {
         <AboutSection />
       </section>
 
-      {/* Full Services Page Preview */}
-      <section className="home-section light-bg">
-        <ServicesSection />
+      <section className="home-section">
+        <Insights />
       </section>
+
+      
 
       {/* Why Choose Us */}
       <section className="home-section">
         <WhyChooseUs />
       </section>
 
-      {/* Booking Form */}
-      <section className="home-section light-bg">
-        <BookingForm />
+      <section className="home-section light-bg ">
+        <AccreditationSection />
       </section>
 
       {/* Testimonials */}
@@ -45,15 +48,18 @@ const Home = () => {
         <Testimonials />
       </section>
 
-      {/* Gallery */}
-      <section className="home-section light-bg">
-        <Gallery />
-      </section>
+     
 
-      {/* Contact Section */}
       <section className="home-section">
-        <ContactSection />
+        <Gallery1 />
       </section>
+      
+      
+     {/* Full Services Page Preview */}
+      <section className="home-section light-bg">
+        <ServicesSection />
+      </section>
+      
     </div>
   );
 };

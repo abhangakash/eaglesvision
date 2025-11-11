@@ -1,0 +1,176 @@
+/* Bottom Nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(10, 20, 40, 0.92);
+  color: white;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0;
+  box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.25);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: 999;
+}
+
+.bottom-nav-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.bottom-nav-item {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.bottom-nav-item svg {
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+
+.bottom-nav-item:hover {
+  color: #ff9800;
+  transform: translateY(-3px);
+}
+
+.whatsapp-icon {
+  color: #25d366;
+}
+
+/* Floating Booking Button */
+.floating-book-btn {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  background: linear-gradient(135deg, #2688ff 0%, #0044ff 80%, #4f92ff 100%);
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 10px 28px 0 rgba(255, 152, 0, 0.37), 0 2px 4px rgba(0,0,0,0.13);
+  padding: 20px;
+  font-size: 26px;
+  text-decoration: none;
+  border: 3px solid #ffe0b2;
+  z-index: 1050;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  transition:
+    transform 0.22s cubic-bezier(0.45, 1.1, 0.68, 1.02),
+    box-shadow 0.22s cubic-bezier(0.45, 1.1, 0.68, 1.02),
+    background 0.26s;
+  animation: floatBounce 2.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+.floating-book-btn:hover,
+.floating-book-btn:focus {
+  transform: scale(1.14) translateY(-4px);
+  box-shadow: 0 16px 34px rgba(255, 152, 0, 0.52), 0 2px 8px rgba(0,0,0,0.15);
+  background: linear-gradient(130deg, #ffb74d 0%, #ffa726 70%, #ffe082 100%);
+  outline: none;
+}
+
+@keyframes floatBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  45% {
+    transform: translateY(-10px);
+  }
+  55% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Info Popup */
+.info-popup {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffffee;
+  color: #000;
+  border-radius: 15px;
+  padding: 15px 18px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.3);
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+}
+
+.info-popup h3 {
+  text-align: center;
+  color: #0a2c6f;
+  margin-bottom: 8px;
+}
+
+.info-popup p {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.info-popup .highlight {
+  color: #0d3e92;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #444;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Mobile Only */
+@media (max-width: 768px) {
+  .bottom-nav {
+    display: flex;
+  }
+
+  .floating-book-btn {
+    bottom: 75px;
+    right: 18px;
+    padding: 16px;
+  }
+}
+/* Apply padding only for mobile screens */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 45px; /* same height as mobile bottom navbar */
+  }
+}
