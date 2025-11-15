@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaHome, FaStethoscope, FaRegImages, FaEnvelope, FaInfoCircle } from "react-icons/fa";
+import { FaHome, FaStethoscope, FaRegImages, FaEnvelope, FaInfoCircle, FaNewspaper } from "react-icons/fa";
 import logo from "../assets/logo.png";
 import "../styles/navbar.css";
 
@@ -9,7 +9,8 @@ const navLinks = [
   { path: "/services", name: "Services", icon: <FaStethoscope /> },  // Changed service icon
   { path: "/aboutus", name: "About", icon: <FaInfoCircle /> },
   { path: "/gallery", name: "Gallery", icon: <FaRegImages /> },
-  { path: "/contact", name: "Contact", icon: <FaEnvelope /> }
+  { path: "/contact", name: "Contact", icon: <FaEnvelope /> },
+{ path: "/blog", name: "Blog", icon: <FaNewspaper /> }
 ];
 
 const Navbar = () => {

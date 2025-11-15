@@ -8,6 +8,9 @@ import Contact from "./pages/Contact";
 import Gallery from "./pages/Gallery";
 import AboutUs from "./pages/Aboutus";
 import Blog from "./pages/Blog";
+import BlogList from "./pages/BlogList"; 
+
+
 import BottomNav from "./components/BottomNav";
 import "./styles/main.css";
 
@@ -23,6 +26,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/blog" element={<BlogList />} />        {/* Main blog page */}
           <Route path="/blog/:slug" element={<Blog />} />
         </Routes>
       </main>
