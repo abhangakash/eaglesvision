@@ -37,7 +37,7 @@ const WhyChooseUsSection = () => {
                 {/* Header and Value Proposition */}
                 <div className="wcu-header">
                     <span className="section-tag-wcu">Your Health, Our Priority</span>
-                    <h2>The EaglesVision Difference: **Accuracy Meets Care**</h2>
+                    <h2>The EaglesVision Difference: Accuracy Meets Care</h2>
                     <p>
                         Choosing a diagnostic center is choosing trust. We differentiate ourselves through unmatched clinical **precision**, investment in **technology**, and a truly **patient-centric** service model.
                     </p>

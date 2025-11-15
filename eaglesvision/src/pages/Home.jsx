@@ -1,7 +1,6 @@
 import React from "react";
 import HeroSection from "../components/Home/HeroSection";
 import AboutSection from "../components/Home/AboutSection";
-import ServicesSection from "../components/Home/ServicesSection";
 import WhyChooseUs from "../components/Home/WhyChooseUs";
 import BookingForm from "../components/Home/BookingForm";
 import Testimonials from "../components/Home/Testimonials";
@@ -55,10 +54,7 @@ const Home = () => {
       </section>
       
       
-     {/* Full Services Page Preview */}
-      <section className="home-section light-bg">
-        <ServicesSection />
-      </section>
+    
       
     </div>
   );

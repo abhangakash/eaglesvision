@@ -56,8 +56,7 @@ export default function Footer() {
           <div className="footer-socials">
             <a href="#" aria-label="Facebook"><FaFacebookF /></a>
             <a href="#" aria-label="Twitter"><FaTwitter /></a>
-            <a href="#" aria-label="LinkedIn"><FaLinkedinIn /></a>
-            <a href="#" aria-label="Instagram"><FaInstagram /></a>
+            <a href="https://www.instagram.com/eaglesvisiondiagnostics/?__d=dist" aria-label="Instagram"><FaInstagram /></a>
           </div>
         </div>
       </div>

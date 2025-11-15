@@ -8,7 +8,7 @@
 
 /* Hero Section */
 .gallery-hero {
-  background: url("../assets/img1.JPG") center/cover no-repeat;
+  background: url("../assets/img4.JPG") center/cover no-repeat;
   position: relative;
   height: 60vh;
   display: flex;
@@ -30,7 +30,11 @@
 }
 .hero-content h1 {
   font-size: clamp(1.8rem, 5vw, 3rem);
+  padding: 2px 25px 2px 25px;
+  background: #fff;
+  color: rgb(53, 77, 125);
   font-weight: 700;
+  border-radius: 15px;
   margin-bottom: 0.5rem;
 }
 .hero-content p {
@@ -49,6 +53,7 @@
 }
 .gallery-intro h2 {
   color: #103664;
+  border-bottom: 1px solid rgb(18, 10, 168);
   font-size: clamp(1.4rem, 3vw, 2rem);
   margin-bottom: 0.5rem;
 }
@@ -96,7 +101,7 @@
 
 /* Footer */
 .gallery-footer {
-  background: #103664;
+  background: linear-gradient(90deg, #ffffff, #e5e8f0);
   color: white;
   text-align: center;
   padding: 2.5rem 1rem;
@@ -104,7 +109,7 @@
 .gallery-footer p {
   font-style: italic;
   font-size: clamp(1rem, 2.5vw, 1.2rem);
-  color: #bcd4ff;
+  color: #141313;
   max-width: 700px;
   margin: 0 auto;
 }

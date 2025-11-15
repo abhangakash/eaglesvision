@@ -37,7 +37,7 @@ const AboutHomeSectionV5 = () => {
                 {/* 1. Value Proposition (Left Side) */}
                 <div className="v5-value-proposition">
                     <span className="section-subtitle">Our Promise to You</span>
-                    <h2>The Future of Diagnostics: **EaglesVision**</h2>
+                    <h2>The Future of Diagnostics: EaglesVision</h2>
                     <p>
                         We simplify complex health testing. Our focus is on providing a seamless, **highly reliable service** built on transparent communication and medical excellence.
                     </p>

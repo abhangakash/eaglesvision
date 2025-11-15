@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/hero.css";
-import heroImg from "../../assets/hero.webp"; // 1920x1080 recommended
+import heroImg from "../../assets/hero.webp";
 
 const HeroSection = () => {
   return (
@@ -16,19 +16,22 @@ const HeroSection = () => {
       </div>
 
       <div className="hero-content">
-        <h1>Eagle’s Vision Diagnostics Center</h1>
-        <p>Precision · Trust · Excellence in Every Diagnosis</p>
-
-        <div className="hero-buttons">
-          <Link to="/booking" className="btn primary">
-            Book Appointment
-          </Link>
-          <Link to="/services" className="btn secondary">
-            Our Services
-          </Link>
-          <Link to="/contact" className="btn outline">
-            Contact Us
-          </Link>
+        <div className="hero-text">
+          <h1>
+            Eagle’s Vision <span className="highlight">Diagnostics Center</span>
+          </h1>
+          <p className="hero-subtitle">
+            Delivering <strong>Precision</strong>, <strong>Trust</strong> &{" "}
+            <strong>Excellence</strong> in Every Diagnosis
+          </p>
+          <div className="hero-buttons">
+            <Link to="/booking" className="btn btn-primary">
+              Book Appointment
+            </Link>
+            <Link to="/services" className="btn btn-secondary">
+              Our Services
+            </Link>
+          </div>
         </div>
       </div>
     </section>

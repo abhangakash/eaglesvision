@@ -11,7 +11,7 @@
   color: #fff;
   text-align: center;
   padding: 5rem 1.5rem 4rem;
-  background-image: url("../assets/hero.jpg");
+  background-image: url("../assets/lab3.avif");
   background-size: cover;
   background-position: center;
   position: relative;
@@ -30,6 +30,7 @@
 }
 .services-hero-content h1 {
   font-size: clamp(2rem, 5vw, 3rem);
+  color: lightcyan;
   font-weight: 800;
   margin-bottom: 1rem;
 }
@@ -40,16 +41,17 @@
   line-height: 1.6;
 }
 .hero-cta-btn {
-  background: #00b894;
+  background: #ffffff;
   padding: 0.9rem 2rem;
-  color: white;
+  color: rgb(17, 6, 79);
   border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
 }
 .hero-cta-btn:hover {
-  background: #009975;
+  background: #030099;
+  color:white;
 }
 
 /* --- GRID SECTION --- */
@@ -129,8 +131,8 @@
   margin-inline: auto;
 }
 .cta-button {
-  background: #00b894;
-  color: white;
+  background: #fff;
+ color: rgb(17, 6, 79);
   padding: 0.9rem 2rem;
   border-radius: 50px;
   font-weight: 600;
@@ -138,7 +140,8 @@
   transition: all 0.3s ease;
 }
 .cta-button:hover {
-  background: #009975;
+  background: #001299;
+  color:white;
 }
 
 /* Responsive Adjustments */
