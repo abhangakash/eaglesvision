@@ -149,8 +149,26 @@
   .hero-subtitle {
     font-size: 1rem;
   }
-  .hero-buttons {
-    flex-direction: column;
-    gap: 15px;
+    .hero-buttons {
+      margin-top: 40px;
+    gap: 8px;             /* smaller gap for mobile */
+    overflow-x: auto;     /* allow horizontal scroll if buttons too wide */
+    padding: 0 10px;      /* small side padding */
+  }
+
+  .hero-buttons .btn {
+    flex: 0 0 auto;       /* prevent buttons from stretching */
+    font-size: 0.9rem;    /* slightly smaller text */
+    padding: 0.6rem 1rem;
+  }
+
+  /* Optional: add scrollbar styling for mobile */
+  .hero-buttons::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .hero-buttons::-webkit-scrollbar-thumb {
+    background: #004aad;
+    border-radius: 3px;
   }
 }
