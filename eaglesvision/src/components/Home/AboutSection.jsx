@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCalendarCheck, FaVial, FaChartLine, FaShieldAlt } from "react-icons/fa";
+import { FaCalendarCheck, FaVial, FaChartLine, FaShieldAlt, FaProcedures, FaXRay } from "react-icons/fa";
 import "../../styles/homeabout.css"; 
 
 const utilityFeatures = [
@@ -15,11 +15,18 @@ const utilityFeatures = [
         description: "Utilizing state-of-the-art instruments for ultimate testing accuracy.",
         icon: <FaVial />,
     },
+    
     {
-        id: 3,
-        title: "Comprehensive Health Panel",
-        description: "A full spectrum of diagnostics from screening to specialized tests.",
-        icon: <FaChartLine />,
+        id: 4,
+        title: "Portable Services",
+        description: "Lab tests conducted at your home or office for your convenience.",
+        icon: <FaProcedures />,
+    },
+    {
+        id: 5,
+        title: "X-Ray & Imaging",
+        description: "Advanced imaging services with fast results and detailed reporting.",
+        icon: <FaXRay />,
     },
 ];
 
@@ -39,7 +46,7 @@ const AboutHomeSectionV5 = () => {
                     <span className="section-subtitle">Our Promise to You</span>
                     <h2>The Future of Diagnostics: EaglesVision</h2>
                     <p>
-                        We simplify complex health testing. Our focus is on providing a seamless, **highly reliable service** built on transparent communication and medical excellence.
+                        We simplify complex health testing. Our focus is on providing a seamless, <strong>highly reliable service</strong> built on transparent communication and medical excellence.
                     </p>
                     
                     <div className="v5-metric-bar">
@@ -73,7 +80,7 @@ const AboutHomeSectionV5 = () => {
                     {/* Certification Box */}
                     <div className="v5-certification-box">
                         <FaShieldAlt className="shield-icon-v5" />
-                        <p>**Globally Certified:** Our standards exceed expectations, guaranteeing trusted results every time.</p>
+                        <p><strong>Globally Certified:</strong> Our standards exceed expectations, guaranteeing trusted results every time.</p>
                     </div>
 
                 </div>

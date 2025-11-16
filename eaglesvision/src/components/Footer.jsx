@@ -54,7 +54,7 @@ export default function Footer() {
           <p><FaPhone className="icon" /> For Lab: <a href="tel:9607109962">9607109962</a></p>
           <p><FaMapMarkerAlt className="icon" /> Shop No. 10, 1st Floor, Ganesh Bella Montana, Shinde Wasti Chowk, Ravet, Pune-412101</p>
           <div className="footer-socials">
-            <a href="#" aria-label="Facebook"><FaFacebookF /></a>
+            <a href="https://www.facebook.com/share/1BU5uD2tbY/" aria-label="Facebook"><FaFacebookF /></a>
             <a href="#" aria-label="Twitter"><FaTwitter /></a>
             <a href="https://www.instagram.com/eaglesvisiondiagnostics/?__d=dist" aria-label="Instagram"><FaInstagram /></a>
           </div>

@@ -1,4 +1,6 @@
-/* Bottom Nav */
+/* -------------------------------------------
+   BOTTOM NAVIGATION (Original + Polished)
+-------------------------------------------- */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -45,31 +47,28 @@
   color: #ff9800;
   transform: translateY(-3px);
 }
-/* Bottom Nav Info button fix */
+
 .bottom-nav-item.info-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  /* Reset button defaults */
   padding: 0;
   margin: 0;
   border: none;
   background: none;
   font: inherit;
   line-height: 1;
-
-  /* Important: match height with other nav items */
   height: 100%;
 }
-
 
 .whatsapp-icon {
   color: #25d366;
 }
 
-/* Floating Booking Button */
+/* -------------------------------------------
+   FLOATING BOOKING BUTTON
+-------------------------------------------- */
 .floating-book-btn {
   position: fixed;
   bottom: 90px;
@@ -77,7 +76,7 @@
   background: linear-gradient(135deg, #2688ff 0%, #0044ff 80%, #4f92ff 100%);
   color: #fff;
   border-radius: 50%;
-  box-shadow: 0 10px 28px 0 rgba(255, 152, 0, 0.37), 0 2px 4px rgba(0,0,0,0.13);
+  box-shadow: 0 10px 28px rgba(255, 152, 0, 0.37), 0 2px 4px rgba(0, 0, 0, 0.13);
   padding: 20px;
   font-size: 26px;
   text-decoration: none;
@@ -88,35 +87,32 @@
   align-items: center;
   justify-content: center;
   outline: none;
-  transition:
-    transform 0.22s cubic-bezier(0.45, 1.1, 0.68, 1.02),
-    box-shadow 0.22s cubic-bezier(0.45, 1.1, 0.68, 1.02),
-    background 0.26s;
+  transition: transform 0.22s cubic-bezier(0.45, 1.1, 0.68, 1.02),
+              box-shadow 0.22s cubic-bezier(0.45, 1.1, 0.68, 1.02),
+              background 0.26s;
   animation: floatBounce 2.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
 
 .floating-book-btn:hover,
 .floating-book-btn:focus {
   transform: scale(1.14) translateY(-4px);
-  box-shadow: 0 16px 34px rgba(255, 152, 0, 0.52), 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 16px 34px rgba(255, 152, 0, 0.52),
+              0 2px 8px rgba(0, 0, 0, 0.15);
   background: linear-gradient(130deg, #ffb74d 0%, #ffa726 70%, #ffe082 100%);
-  outline: none;
 }
 
 @keyframes floatBounce {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
   }
-  45% {
-    transform: translateY(-10px);
-  }
-  55% {
+  45%, 55% {
     transform: translateY(-10px);
   }
 }
 
-/* Info Popup */
+/* -------------------------------------------
+   INFO POPUP (Original)
+-------------------------------------------- */
 .info-popup {
   position: fixed;
   bottom: 80px;
@@ -163,7 +159,9 @@
   cursor: pointer;
   color: #444;
 }
-
+h3 {
+    margin-top: 9px;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -175,7 +173,9 @@
   }
 }
 
-/* Mobile Only */
+/* -------------------------------------------
+   MOBILE ONLY FIX
+-------------------------------------------- */
 @media (max-width: 768px) {
   .bottom-nav {
     display: flex;
@@ -186,10 +186,105 @@
     right: 18px;
     padding: 16px;
   }
-}
-/* Apply padding only for mobile screens */
-@media (max-width: 768px) {
+
   body {
-    padding-bottom: 45px; /* same height as mobile bottom navbar */
+    padding-bottom: 45px;
+  }
+}
+
+/* -------------------------------------------
+   MODERN CHAT POPUP (New & Professional)
+-------------------------------------------- */
+.chat-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  animation: fadeChatBg 0.28s ease;
+}
+
+.chat-popup-content {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 18px 18px 0 0;
+  padding: 22px 20px 30px;
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.22);
+  animation: slideUpChat 0.32s cubic-bezier(0.33, 1, 0.48, 1);
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+.chat-popup-content::before {
+  content: "";
+  width: 45px;
+  height: 5px;
+  background: #ccc;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.chat-popup-content h3 {
+  margin: 0 0 15px;
+  color: #0a2c6f;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.chat-popup .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #444;
+}
+
+.chat-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25d366;
+  gap: 10px;
+  color: white;
+  padding: 13px;
+  margin: 10px 0;
+  border-radius: 10px;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: all 0.25s ease;
+  font-weight: 500;
+}
+
+.chat-option:hover {
+  background: #1ebe5d;
+  transform: translateY(-3px);
+}
+
+/* Chat Popup Animations */
+@keyframes slideUpChat {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeChatBg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
