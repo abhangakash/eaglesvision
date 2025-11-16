@@ -17,7 +17,7 @@ export default function Gallery() {
       {/* Hero Section */}
       <section className="gallery-hero">
         <div className="hero-content">
-          <h1>Our Modern Diagnostic Center</h1>
+          <h1>Our Modern Diagnostic Centre</h1>
           <p>
             Discover our advanced labs, imaging rooms, and patient-friendly environment
             designed to deliver precision, comfort, and care.
@@ -29,7 +29,7 @@ export default function Gallery() {
       <section className="gallery-intro">
         <h2>Explore Our World-Class Facilities</h2>
         <p>
-          Every space inside <strong>Eagle’s Vision Diagnostics Center</strong> has been
+          Every space inside <strong>Eagle’s Vision Diagnostics Centre</strong> has been
           carefully designed — ensuring accuracy, hygiene, and a modern healthcare experience
           powered by technology and compassion.
         </p>

@@ -27,7 +27,7 @@ export default function BottomNav() {
           <button className="close-btn" onClick={() => setShowInfo(false)}>
             ✕
           </button>
-          <h3>Eagle's Vision Diagnostics Center</h3>
+          <h3>Eagle's Vision Diagnostics Centre</h3>
           <p>
             <FaEnvelope /> eaglesvisiondiagnostics@gmail.com
           </p>
@@ -96,7 +96,7 @@ export default function BottomNav() {
           </button>
 
           <a
-            href="https://maps.google.com?q=Eagle's Vision Diagnostics Center Ravet Pune"
+            href="https://maps.google.com?q=Eagle's Vision Diagnostics Centre Ravet Pune"
             target="_blank"
             rel="noopener noreferrer"
             className="bottom-nav-item"

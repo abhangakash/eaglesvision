@@ -14,8 +14,8 @@ import {
 
 import "../styles/bookingform.css";
 
-const LAB_WHATSAPP = "9607109962";
-const XRAY_WHATSAPP = "9405109962";
+const LAB_WHATSAPP = "919607109962";
+const XRAY_WHATSAPP = "919405109962";
 const ICON_SIZE = 18;
 
 export default function Booking() {
@@ -118,7 +118,7 @@ export default function Booking() {
 🏥 *Department*: ${data.department}
 📝 *Service(s)*: ${selectedServices}
 ✅ *Visit Type*: ${
-      data.visitType === "center" ? "At Center" : "At Home"
+      data.visitType === "center" ? "At Centre" : "At Home"
     }
 🗺️ ${locationDetails}
 📅 *Date & Time*: ${data.date} at ${data.time}
@@ -352,7 +352,7 @@ export default function Booking() {
                   onChange={() => setVisitType("center")}
                   defaultChecked
                 />
-                At Center
+                At Centre
               </label>
 
               <label>
@@ -376,7 +376,7 @@ export default function Booking() {
             <div className="form-group">
               <label>
                 <FaHospital size={ICON_SIZE} style={{ marginRight: "8px" }} />
-                Center Location <span style={{ color: "red" }}>*</span>
+                Centre Location <span style={{ color: "red" }}>*</span>
               </label>
 
               <select {...register("centerLocation", { required: true })}>
@@ -385,7 +385,7 @@ export default function Booking() {
               </select>
 
               {errors.centerLocation && (
-                <p className="error">Center location is required</p>
+                <p className="error">Centre location is required</p>
               )}
             </div>
           )}

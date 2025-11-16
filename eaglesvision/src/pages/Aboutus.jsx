@@ -24,7 +24,7 @@ const AboutUs = () => {
         <div className="hero-text">
           <h1>Welcome to EaglesVision Diagnostics</h1>
           <p>Precision. Trust. Excellence in Every Diagnosis.</p>
-          <p>Our center combines advanced technology with expert professionals to provide reliable, accurate, and timely diagnostic services for all.</p>
+          <p>Our centre combines advanced technology with expert professionals to provide reliable, accurate, and timely diagnostic services for all.</p>
         </div>
       </section>
 
@@ -36,11 +36,11 @@ const AboutUs = () => {
         </div>
         <div className="mission-card">
           <h2>Our Vision</h2>
-          <p>Become the most trusted and innovative diagnostics center, leading the way in healthcare excellence and patient satisfaction.</p>
+          <p>Become the most trusted and innovative diagnostics centre, leading the way in healthcare excellence and patient satisfaction.</p>
         </div>
         <div className="mission-card">
           <h2>Our Values</h2>
-          <p>Accuracy, Compassion, Innovation, Integrity, and Patient-Centered Care guide every step of our work.</p>
+          <p>Accuracy, Compassion, Innovation, Integrity, and Patient-centred Care guide every step of our work.</p>
         </div>
       </section>
 
