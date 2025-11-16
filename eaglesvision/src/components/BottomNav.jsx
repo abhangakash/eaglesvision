@@ -12,6 +12,7 @@ import { useState } from "react";
 
 export default function BottomNav() {
   const [showInfo, setShowInfo] = useState(false);
+  const [showChatOptions, setShowChatOptions] = useState(false);
 
   return (
     <>
@@ -44,26 +45,56 @@ export default function BottomNav() {
         </div>
       )}
 
-      {/* Bottom Navbar (Mobile Only) */}
+      {/* Chat Selection Popup */}
+      {showChatOptions && (
+        <div className="chat-popup">
+          <div className="chat-popup-content">
+            <button className="close-btn" onClick={() => setShowChatOptions(false)}>✕</button>
+            <h3>Select Chat Option</h3>
+
+            <a
+              href="https://wa.me/919405109962"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="chat-option"
+            >
+              <FaWhatsapp /> Chat for X-Ray
+            </a>
+
+            <a
+              href="https://wa.me/919607109962"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="chat-option"
+            >
+              <FaWhatsapp /> Chat for Lab
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* Bottom Navbar */}
       <nav className="bottom-nav">
         <div className="bottom-nav-container">
           <a href="/" className="bottom-nav-item">
             <FaHome />
             <span>Home</span>
           </a>
+
           <a href="/booking" className="bottom-nav-item">
             <FaCalendarCheck />
             <span>Book</span>
           </a>
-          <a
-            href="https://wa.me/919607109962"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bottom-nav-item"
+
+          {/* New Chat Button triggers popup */}
+          <button
+            className="bottom-nav-item chat-btn"
+            onClick={() => setShowChatOptions(true)}
           >
             <FaWhatsapp className="whatsapp-icon" />
             <span>Chat</span>
-          </a>
+          </button>
+
           <a
             href="https://maps.google.com?q=Eagle's Vision Diagnostics Center Ravet Pune"
             target="_blank"
@@ -73,6 +104,7 @@ export default function BottomNav() {
             <FaMapMarkerAlt />
             <span>Locate</span>
           </a>
+
           <button
             onClick={() => setShowInfo(true)}
             className="bottom-nav-item info-btn"
