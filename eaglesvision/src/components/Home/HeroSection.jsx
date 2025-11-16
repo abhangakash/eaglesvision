@@ -9,7 +9,7 @@ const HeroSection = () => {
       <div className="hero-background">
         <img
           src={heroImg}
-          alt="Eagle’s Vision Diagnostics Center"
+          alt="Eagle’s Vision Diagnostics Centre"
           className="hero-image"
         />
         <div className="hero-overlay"></div>
@@ -18,7 +18,7 @@ const HeroSection = () => {
       <div className="hero-content">
         <div className="hero-text">
           <h1>
-            Eagle’s Vision <span className="highlight">Diagnostics Center</span>
+            Eagle’s Vision <span className="highlight">Diagnostics Centre</span>
           </h1>
           <p className="hero-subtitle">
             Delivering <strong>Precision</strong>, <strong>Trust</strong> &{" "}

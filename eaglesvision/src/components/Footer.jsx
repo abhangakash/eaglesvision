@@ -62,7 +62,7 @@ export default function Footer() {
       </div>
       {/* Footer Bottom */}
       <div className="footer-bottom">
-        &copy; {new Date().getFullYear()} Eagle's Vision Diagnostics Center. All rights reserved.
+        &copy; {new Date().getFullYear()} Eagle's Vision Diagnostics Centre. All rights reserved.
       </div>
     </footer>
   );

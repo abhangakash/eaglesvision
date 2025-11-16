@@ -23,7 +23,7 @@ export default function Contact() {
         <div className="contact-header-left">
           <img src={logo} alt="Eagle's Vision Diagnostics" />
           <div>
-            <h1>Eagle's Vision Diagnostics Center</h1>
+            <h1>Eagle's Vision Diagnostics Centre</h1>
             <p>Clarity Defines Quality...</p>
           </div>
         </div>
@@ -118,7 +118,7 @@ export default function Contact() {
           <h3>Locate Us</h3>
           <iframe
             src="https://www.google.com/maps?q=Ganesh+Bella+Montana,+Shinde+Wasti+Chowk,+Ravet,+Pune-412101&output=embed"
-            title="Eagle's Vision Diagnostics Center"
+            title="Eagle's Vision Diagnostics Centre"
             allowFullScreen
             loading="lazy"
           ></iframe>

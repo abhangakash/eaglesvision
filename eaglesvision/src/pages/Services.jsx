@@ -90,7 +90,7 @@ const Services = () => {
         <div className="services-hero-content">
           <h1>Our Diagnostic Expertise</h1>
           <p>
-            At <strong>Eagle’s Vision Diagnostics Center</strong>, we combine
+            At <strong>Eagle’s Vision Diagnostics Centre</strong>, we combine
             innovation, precision, and care — delivering fast and reliable
             diagnostic services for every patient.
           </p>
