@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/about.css";
 import { FaUserTie, FaUserGraduate, FaFlask, FaBullhorn, FaHeartbeat, FaMicroscope } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const teamMembers = [
   { name: "Aditya D. Korde", role: "Founder & HOD Finance Dept.", icon: <FaUserTie /> },
@@ -17,59 +18,75 @@ const stats = [
 
 const AboutUs = () => {
   return (
-    <div className="about-container">
+    <>
+      {/* --- SEO Meta Tags --- */}
+      <Helmet>
+        <title>About Us | Eagle’s Vision Diagnostics Centre</title>
+        <meta
+          name="description"
+          content="Learn about Eagle’s Vision Diagnostics Centre, our expert team, mission, vision, and commitment to accurate, reliable diagnostic services in Pune."
+        />
+        <meta
+          name="keywords"
+          content="Eagle's Vision Diagnostics, About Us, diagnostic centre Pune, lab experts, healthcare services, X-ray, pathology"
+        />
+      </Helmet>
 
-      {/* Hero */}
-      <section className="about-hero">
-        <div className="hero-text">
-          <h1>Welcome to EaglesVision Diagnostics</h1>
-          <p>Precision. Trust. Excellence in Every Diagnosis.</p>
-          <p>Our centre combines advanced technology with expert professionals to provide reliable, accurate, and timely diagnostic services for all.</p>
-        </div>
-      </section>
+      {/* --- Page Content --- */}
+      <div className="about-container">
 
-      {/* Mission & Vision */}
-      <section className="about-mission">
-        <div className="mission-card">
-          <h2>Our Mission</h2>
-          <p>Deliver accurate diagnostic results with compassion, speed, and integrity, ensuring every patient receives exceptional care.</p>
-        </div>
-        <div className="mission-card">
-          <h2>Our Vision</h2>
-          <p>Become the most trusted and innovative diagnostics centre, leading the way in healthcare excellence and patient satisfaction.</p>
-        </div>
-        <div className="mission-card">
-          <h2>Our Values</h2>
-          <p>Accuracy, Compassion, Innovation, Integrity, and Patient-centred Care guide every step of our work.</p>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="about-stats">
-        {stats.map((stat, idx) => (
-          <div key={idx} className="stat-card">
-            <div className="stat-icon">{stat.icon}</div>
-            <h3>{stat.value}</h3>
-            <p>{stat.title}</p>
+        {/* Hero */}
+        <section className="about-hero">
+          <div className="hero-text">
+            <h1>Welcome to EaglesVision Diagnostics</h1>
+            <p>Precision. Trust. Excellence in Every Diagnosis.</p>
+            <p>Our centre combines advanced technology with expert professionals to provide reliable, accurate, and timely diagnostic services for all.</p>
           </div>
-        ))}
-      </section>
+        </section>
 
-      {/* Team */}
-      <section className="about-team">
-        <h2>Meet Our Experts</h2>
-        <div className="team-grid">
-          {teamMembers.map((member, idx) => (
-            <div key={idx} className="team-card">
-              <div className="team-icon">{member.icon}</div>
-              <h3>{member.name}</h3>
-              <p>{member.role}</p>
+        {/* Mission & Vision */}
+        <section className="about-mission">
+          <div className="mission-card">
+            <h2>Our Mission</h2>
+            <p>Deliver accurate diagnostic results with compassion, speed, and integrity, ensuring every patient receives exceptional care.</p>
+          </div>
+          <div className="mission-card">
+            <h2>Our Vision</h2>
+            <p>Become the most trusted and innovative diagnostics centre, leading the way in healthcare excellence and patient satisfaction.</p>
+          </div>
+          <div className="mission-card">
+            <h2>Our Values</h2>
+            <p>Accuracy, Compassion, Innovation, Integrity, and Patient-centred Care guide every step of our work.</p>
+          </div>
+        </section>
+
+        {/* Stats */}
+        <section className="about-stats">
+          {stats.map((stat, idx) => (
+            <div key={idx} className="stat-card">
+              <div className="stat-icon">{stat.icon}</div>
+              <h3>{stat.value}</h3>
+              <p>{stat.title}</p>
             </div>
           ))}
-        </div>
-      </section>
+        </section>
 
-    </div>
+        {/* Team */}
+        <section className="about-team">
+          <h2>Meet Our Experts</h2>
+          <div className="team-grid">
+            {teamMembers.map((member, idx) => (
+              <div key={idx} className="team-card">
+                <div className="team-icon">{member.icon}</div>
+                <h3>{member.name}</h3>
+                <p>{member.role}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+      </div>
+    </>
   );
 };
 

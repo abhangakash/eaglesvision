@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/blog.css";
+import { Helmet } from "react-helmet-async";
 
 // Example blog data
 const blogs = [
@@ -38,29 +39,45 @@ const blogs = [
 
 const BlogList = () => {
   return (
-    <section className="blog-list-page">
-      <header className="blog-header">
-        <h1>Our Blog & Health Insights</h1>
-        <p>Stay updated with the latest health tips, diagnostics guides, and wellness advice.</p>
-      </header>
+    <>
+      {/* --- SEO --- */}
+      <Helmet>
+        <title>Blog | Eagle’s Vision Diagnostics Centre</title>
+        <meta
+          name="description"
+          content="Read health tips, diagnostic guides, and wellness advice from Eagle’s Vision Diagnostics Centre in Pune. Stay informed with our latest blog posts."
+        />
+        <meta
+          name="keywords"
+          content="health blog, diagnostics tips, Eagle's Vision Diagnostics blog, blood tests, X-Ray, thyroid tests, lab guides"
+        />
+      </Helmet>
 
-      <div className="blog-grid">
-        {blogs.map((blog) => (
-          <div className="blog-card" key={blog.slug}>
-            <div className="blog-content">
-              <p className="blog-date">{blog.date}</p>
-              <h2 className="blog-title">
-                <Link to={`/blog/${blog.slug}`}>{blog.title}</Link>
-              </h2>
-              <p className="blog-excerpt">{blog.excerpt}</p>
-              <Link to={`/blog/${blog.slug}`} className="read-more-btn">
-                Read More →
-              </Link>
+      {/* --- Page Content --- */}
+      <section className="blog-list-page">
+        <header className="blog-header">
+          <h1>Our Blog & Health Insights</h1>
+          <p>Stay updated with the latest health tips, diagnostics guides, and wellness advice.</p>
+        </header>
+
+        <div className="blog-grid">
+          {blogs.map((blog) => (
+            <div className="blog-card" key={blog.slug}>
+              <div className="blog-content">
+                <p className="blog-date">{blog.date}</p>
+                <h2 className="blog-title">
+                  <Link to={`/blog/${blog.slug}`}>{blog.title}</Link>
+                </h2>
+                <p className="blog-excerpt">{blog.excerpt}</p>
+                <Link to={`/blog/${blog.slug}`} className="read-more-btn">
+                  Read More →
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    </>
   );
 };
 

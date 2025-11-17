@@ -12,6 +12,7 @@ import {
   FaStethoscope,
   FaAllergies,
 } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const servicesData = [
   {
@@ -84,52 +85,68 @@ const servicesData = [
 
 const Services = () => {
   return (
-    <section className="modern-services-page">
-      {/* Hero Intro */}
-      <div className="services-hero">
-        <div className="services-hero-content">
-          <h1>Our Diagnostic Expertise</h1>
+    <>
+      {/* --- SEO Meta Tags --- */}
+      <Helmet>
+        <title>Our Services | Eagle’s Vision Diagnostics Centre</title>
+        <meta
+          name="description"
+          content="Explore the comprehensive diagnostic services offered at Eagle’s Vision Diagnostics Centre including lab tests, X-Ray, molecular testing, preventive health packages, and home collection services."
+        />
+        <meta
+          name="keywords"
+          content="diagnostic services, laboratory testing, X-ray, imaging, molecular diagnostics, preventive health, home collection, physiotherapy, Pune diagnostics"
+        />
+      </Helmet>
+
+      {/* --- Page Content --- */}
+      <section className="modern-services-page">
+        {/* Hero Intro */}
+        <div className="services-hero">
+          <div className="services-hero-content">
+            <h1>Our Diagnostic Expertise</h1>
+            <p>
+              At <strong>Eagle’s Vision Diagnostics Centre</strong>, we combine
+              innovation, precision, and care — delivering fast and reliable
+              diagnostic services for every patient.
+            </p>
+            <a href="/booking" className="hero-cta-btn">
+              Book Your Test Now
+            </a>
+          </div>
+        </div>
+
+        {/* Services Grid */}
+        <div className="services-grid">
+          {servicesData.map((service, index) => (
+            <div className="service-box" key={index}>
+              <div className="service-icon">{service.icon}</div>
+              <h2>{service.title}</h2>
+              <p className="service-desc">{service.description}</p>
+              <ul className="service-highlights">
+                {service.highlights.map((point, i) => (
+                  <li key={i}>
+                    <FaNotesMedical className="list-icon" /> {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Footer */}
+        <div className="services-footer-cta">
+          <h2>Ready to Get Tested?</h2>
           <p>
-            At <strong>Eagle’s Vision Diagnostics Centre</strong>, we combine
-            innovation, precision, and care — delivering fast and reliable
-            diagnostic services for every patient.
+            Schedule your appointment online or visit us — our experts ensure
+            smooth, fast, and stress-free testing every time.
           </p>
-          <a href="/booking" className="hero-cta-btn">
-            Book Your Test Now
+          <a href="/booking" className="cta-button">
+            Schedule Appointment
           </a>
         </div>
-      </div>
-
-      {/* Services Grid */}
-      <div className="services-grid">
-        {servicesData.map((service, index) => (
-          <div className="service-box" key={index}>
-            <div className="service-icon">{service.icon}</div>
-            <h2>{service.title}</h2>
-            <p className="service-desc">{service.description}</p>
-            <ul className="service-highlights">
-              {service.highlights.map((point, i) => (
-                <li key={i}>
-                  <FaNotesMedical className="list-icon" /> {point}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      {/* CTA Footer */}
-      <div className="services-footer-cta">
-        <h2>Ready to Get Tested?</h2>
-        <p>
-          Schedule your appointment online or visit us — our experts ensure
-          smooth, fast, and stress-free testing every time.
-        </p>
-        <a href="/booking" className="cta-button">
-          Schedule Appointment
-        </a>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

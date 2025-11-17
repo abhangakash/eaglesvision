@@ -9,6 +9,7 @@ import Gallery from "./pages/Gallery";
 import AboutUs from "./pages/Aboutus";
 import Blog from "./pages/Blog";
 import BlogList from "./pages/BlogList"; 
+import NotFound from "./pages/NotFound"; //
 
 
 import BottomNav from "./components/BottomNav";
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/blog" element={<BlogList />} />        {/* Main blog page */}
           <Route path="/blog/:slug" element={<Blog />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
