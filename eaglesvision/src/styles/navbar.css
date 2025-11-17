@@ -253,6 +253,37 @@
   display: none !important;
 }
 
+/* TABLET (768px–1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hamburger {
+    display: none; /* No hamburger on tablet */
+  }
+
+  .navbar-container {
+    padding: 10px 20px; /* Slightly smaller padding for tablet */
+  }
+
+  .nav-links {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center; /* Center nav items */
+    align-items: center;
+    flex-wrap: wrap; /* Allows items to wrap if not enough space */
+    margin-left: 0;
+  }
+
+  .nav-links a {
+    margin: 5px 12px; /* Reduced spacing to fit */
+    font-size: 0.95em; /* Slightly smaller font */
+    padding: 8px 10px;
+    white-space: nowrap; /* Prevent breaking inside link text */
+  }
+
+  .logo-img {
+    height: 35px; /* Slightly smaller logo */
+  }
+}
+
 /* --- Desktop nav link alignment --- */
 @media (min-width: 769px) {
   .nav-links {

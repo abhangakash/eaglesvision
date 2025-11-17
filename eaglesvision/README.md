@@ -1,16 +1,120 @@
-# React + Vite
+# Eagles Vision Diagnostics Centre Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Live Site](https://eaglesvisiondiagnosticscenter.com)
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a fully responsive React 18 website for **Eagles Vision Diagnostics Centre** located in Ravet, Pune. 
 
-## React Compiler
+The website showcases diagnostic services including:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Digital X-Ray & Portable X-Ray
+- Pathology Lab Tests (Blood, Urine, Stool, Biochemistry, Microbiology)
+- PCR & Allergy Tests
+- Physiotherapy Services
+- Home Sample Collection & Online Reports
 
-## Expanding the ESLint configuration
+The site is **SEO-optimized**, includes structured data for Google rich results, and demonstrates professional deployment workflow.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Features
+
+- Single Page Application (SPA) built with **React 18**  
+- **React Router 7** for client-side routing  
+- SEO Optimization:
+  - Meta tags (Title, Description, Keywords)  
+  - Open Graph & Twitter Cards  
+  - JSON-LD structured data (`Organization` & `MedicalOrganization`)  
+- **Responsive Design** for desktop and mobile  
+- Google Search Console integration with sitemap  
+- Social media links (`sameAs`) for Facebook and Instagram  
+- Deployed on **Render** platform
+
+
+---
+
+## Tech Stack
+
+- Frontend: React 18  
+- Routing: React Router 7  
+- Styling: CSS, Font Awesome 6.5  
+- SEO & Structured Data: JSON-LD, Meta Tags, Open Graph, Twitter Cards  
+- Deployment: Render  
+- Version Control: Git & GitHub
+
+---
+
+## Folder Structure
+
+/public
+favicon.png
+/src
+/components
+/pages
+/assets
+package.json
+README.md
+
+
+---
+## Installation
+
+To run the project locally:
+
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd eaglesvision
+
+# Install dependencies 
+npm install 
+
+# Start the development server
+npm run dev
+
+
+---
+
+# **Step 7: Deployment**
+
+```markdown
+## Deployment
+
+The website is deployed on **Render**.  
+
+To build for production:
+
+```bash
+npm run build
+
+---
+
+# **Step 8: SEO / Structured Data**
+
+```markdown
+## SEO & Structured Data
+
+- Meta Tags: Title, Description, Keywords  
+- Open Graph Tags for Facebook sharing  
+- Twitter Card Tags  
+- JSON-LD structured data:
+  - Organization
+  - MedicalOrganization
+- Sitemap submitted to Google Search Console  
+- Social links integrated using `sameAs`
+
+
+## Notes
+
+- Downgraded React to **18** for `react-helmet-async` compatibility  
+- SEO optimization for Google search visibility  
+- SPA implemented with client-side routing  
+- Website highlights diagnostic services with fast, reliable, and accurate online info
+
+## Client / Business Value
+
+- Enables customers to find the center via Google search  
+- Shows social media and contact information  
+- Highlights home sample collection and diagnostic services  
+- Improves visibility with structured data and SEO

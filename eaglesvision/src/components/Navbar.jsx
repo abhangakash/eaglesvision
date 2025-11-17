@@ -10,7 +10,7 @@ const navLinks = [
   { path: "/aboutus", name: "About", icon: <FaInfoCircle /> },
   { path: "/gallery", name: "Gallery", icon: <FaRegImages /> },
   { path: "/contact", name: "Contact", icon: <FaEnvelope /> },
-{ path: "/blog", name: "Blog", icon: <FaNewspaper /> }
+  { path: "/blog", name: "Blog", icon: <FaNewspaper /> }
 ];
 
 const Navbar = () => {
