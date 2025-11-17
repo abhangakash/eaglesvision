@@ -27,7 +27,7 @@ export default function BottomNav() {
           <button className="close-btn" onClick={() => setShowInfo(false)}>
             ✕
           </button>
-          <h3>Eagle's Vision Diagnostics Centre</h3>
+          <h3>Eagle's Vision Diagnostics</h3>
           <p>
             <FaEnvelope /> eaglesvisiondiagnostics@gmail.com
           </p>
