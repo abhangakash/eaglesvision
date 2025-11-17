@@ -1,16 +1,16 @@
-/* -------------------------------------------
-   BOTTOM NAVIGATION (Original + Polished)
--------------------------------------------- */
+/* ------------------------------
+   BOTTOM NAVIGATION
+------------------------------- */
 .bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   backdrop-filter: blur(10px);
-  background: rgba(10, 20, 40, 0.92);
+  background: rgba(10, 20, 40, 0.95);
   color: white;
   display: none;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   padding: 8px 0;
   box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.25);
@@ -23,52 +23,50 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .bottom-nav-item {
-  color: white;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 13px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.25s ease, color 0.25s ease;
-}
-
-.bottom-nav-item svg {
-  font-size: 22px;
-  margin-bottom: 3px;
-}
-
-.bottom-nav-item:hover {
-  color: #ff9800;
-  transform: translateY(-3px);
-}
-
-.bottom-nav-item.info-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  margin: 0;
-  border: none;
+  font-size: 12px;
+  color: white;
+  text-decoration: none;
   background: none;
-  font: inherit;
+  border: none;
+  cursor: pointer;
+  padding: 5px 8px;
+  transition: all 0.25s ease;
   line-height: 1;
-  height: 100%;
+}
+
+.bottom-nav-item svg {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 3px;
+}
+
+.bottom-nav-item span {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+}
+
+.bottom-nav-item:hover {
+  color: #ff9800;
+  transform: translateY(-2px);
 }
 
 .whatsapp-icon {
   color: #25d366;
+  width: 24px;
+  height: 24px;
 }
 
-/* -------------------------------------------
-   FLOATING BOOKING BUTTON
--------------------------------------------- */
+/* Floating Booking Button */
 .floating-book-btn {
   position: fixed;
   bottom: 90px;
@@ -87,32 +85,23 @@
   align-items: center;
   justify-content: center;
   outline: none;
-  transition: transform 0.22s cubic-bezier(0.45, 1.1, 0.68, 1.02),
-              box-shadow 0.22s cubic-bezier(0.45, 1.1, 0.68, 1.02),
-              background 0.26s;
-  animation: floatBounce 2.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  transition: transform 0.22s, box-shadow 0.22s, background 0.26s;
+  animation: floatBounce 2.5s infinite cubic-bezier(0.37, 0, 0.63, 1);
 }
 
 .floating-book-btn:hover,
 .floating-book-btn:focus {
   transform: scale(1.14) translateY(-4px);
-  box-shadow: 0 16px 34px rgba(255, 152, 0, 0.52),
-              0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 16px 34px rgba(255, 152, 0, 0.52), 0 2px 8px rgba(0, 0, 0, 0.15);
   background: linear-gradient(130deg, #ffb74d 0%, #ffa726 70%, #ffe082 100%);
 }
 
 @keyframes floatBounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  45%, 55% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  45%, 55% { transform: translateY(-10px); }
 }
 
-/* -------------------------------------------
-   INFO POPUP (Original)
--------------------------------------------- */
+/* Info Popup */
 .info-popup {
   position: fixed;
   bottom: 80px;
@@ -132,6 +121,7 @@
 }
 
 .info-popup h3 {
+  font-size: 16px;
   text-align: center;
   color: #0a2c6f;
   margin-bottom: 8px;
@@ -159,46 +149,17 @@
   cursor: pointer;
   color: #444;
 }
-h3 {
-    margin-top: 9px;
-}
+
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, 20px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
 }
 
-/* -------------------------------------------
-   MOBILE ONLY FIX
--------------------------------------------- */
-@media (max-width: 768px) {
-  .bottom-nav {
-    display: flex;
-  }
-
-  .floating-book-btn {
-    bottom: 75px;
-    right: 18px;
-    padding: 16px;
-  }
-
-  body {
-    padding-bottom: 45px;
-  }
-}
-
-/* -------------------------------------------
-   MODERN CHAT POPUP (New & Professional)
--------------------------------------------- */
+/* Chat Popup */
 .chat-popup {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0,0,0,0.55);
   backdrop-filter: blur(3px);
   z-index: 2000;
   display: flex;
@@ -270,21 +231,19 @@ h3 {
   transform: translateY(-3px);
 }
 
-/* Chat Popup Animations */
 @keyframes slideUpChat {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
 
 @keyframes fadeChatBg {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* MOBILE ONLY */
+@media (max-width: 768px) {
+  .bottom-nav { display: flex; }
+  .floating-book-btn { bottom: 75px; right: 18px; padding: 16px; }
+  body { padding-bottom: 60px; }
 }

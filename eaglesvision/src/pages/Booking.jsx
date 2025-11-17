@@ -63,7 +63,7 @@ export default function Booking() {
 
   const XRAY_SERVICES = [
     "X-ray",
-    "ECG (Electrocardiogram)",
+    "ECG",
     "Echocardiography",
   ];
 

@@ -86,7 +86,6 @@ export default function BottomNav() {
             <span>Book</span>
           </a>
 
-          {/* New Chat Button triggers popup */}
           <button
             className="bottom-nav-item chat-btn"
             onClick={() => setShowChatOptions(true)}

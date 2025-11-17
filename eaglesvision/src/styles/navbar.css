@@ -285,3 +285,25 @@
   opacity: 1;
   visibility: visible;
 }
+/* FIX: Remove the unwanted square under the hamburger/X */
+.hamburger {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important; /* Android fix */
+}
+
+.hamburger:focus,
+.hamburger:focus-visible,
+.hamburger:active {
+  outline: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Also remove the layer when active (X state) */
+.hamburger.active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
