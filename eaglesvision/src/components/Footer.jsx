@@ -62,7 +62,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Powered by section */}
+      {/* Powered by section 
       <div className="footer-poweredby">
         <a href="https://www.yourcompanywebsite.com" target="_blank" rel="noopener noreferrer">
          <span className="company-name">Developed By</span>
@@ -70,6 +70,7 @@ export default function Footer() {
           <span className="company-name">Digital Solutions Co.</span>
         </a>
       </div>
+      */}
 
       {/* Footer Bottom */}
       <div className="footer-bottom">
