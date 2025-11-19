@@ -8,7 +8,7 @@
 
 /* Hero Section */
 .gallery-hero {
-  background: url("../assets/img4.JPG") center/cover no-repeat;
+  background-image: url("https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544294/img4_deg4yt.jpg");
   position: relative;
   height: 60vh;
   display: flex;

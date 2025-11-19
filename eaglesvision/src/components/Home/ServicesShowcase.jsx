@@ -1,33 +1,42 @@
 import React from "react";
 import "../../styles/ServicesShowcase.css";
-import pathology from "../../assets/pathology.png";
-import xray from "../../assets/xray.png";
-import ecg from "../../assets/ecg.png";
-import ultrasound from "../../assets/ultrasound.png";
-import bloodtest from "../../assets/bloodtest.png";
-import ctscan from "../../assets/ctscan.png";
-import mri from "../../assets/mri.png";
+
+// Cloudinary optimized URLs
 const services = [
-  { name: "Pathology", img: pathology },
-  { name: "X-Ray", img: xray },
-  { name: "ECG", img: ecg },
-  { name: "Ultrasound", img: ultrasound },
-  { name: "Blood Test", img: bloodtest },
-  { name: "CT Scan", img: ctscan },
-  { name: "MRI", img: mri },
-   { name: "Pathology", img: pathology },
-  { name: "X-Ray", img: xray },
-  { name: "ECG", img: ecg },
-  { name: "Ultrasound", img: ultrasound },
-  { name: "Blood Test", img: bloodtest },
-  { name: "CT Scan", img: ctscan },
-  { name: "MRI", img: mri },
+  {
+    name: "Pathology",
+    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545498/pathology_ruqppo.png",
+  },
+  {
+    name: "X-Ray",
+    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545535/xray_iixsyk.png",
+  },
+  {
+    name: "ECG",
+    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545566/ecg_mntgny.png",
+  },
+  {
+    name: "Ultrasound",
+    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545519/ultrasound_adu9vf.png",
+  },
+  {
+    name: "Blood Test",
+    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545429/bloodtest_hirwqw.png",
+  },
+  {
+    name: "CT Scan",
+    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545578/ctscan_msrzu8.png",
+  },
+  {
+    name: "MRI",
+    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545488/mri_pgjhyj.png",
+  },
 ];
 
-const ServicesShowcase = () => {
-  // Duplicate the list twice for smooth infinite scroll illusion
-  const doubledServices = [...services, ...services];
+// Duplicate once to maintain infinite scroll effect
+const doubledServices = [...services, ...services];
 
+const ServicesShowcase = () => {
   return (
     <div className="services-wrapper">
       <div className="scroll-container">
@@ -35,7 +44,7 @@ const ServicesShowcase = () => {
           {doubledServices.map((service, index) => (
             <div className="service-item" key={index}>
               <div className="circle-image">
-                <img src={service.img} alt={service.name} />
+                <img src={service.img} alt={service.name} loading="lazy" />
               </div>
               <p className="service-name">{service.name}</p>
             </div>

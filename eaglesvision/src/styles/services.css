@@ -11,11 +11,12 @@
   color: #fff;
   text-align: center;
   padding: 8rem 1.5rem 4rem;
-  background-image: url("../assets/lab3.avif");
+  background-image: url("https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545259/lab3_ptsyry.avif");
   background-size: cover;
   background-position: center;
   position: relative;
 }
+
 .services-hero::before {
   content: "";
   position: absolute;
