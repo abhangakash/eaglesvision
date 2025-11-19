@@ -7,7 +7,13 @@ const HeroSection = () => {
     <section className="hero-section">
       <div className="hero-background">
         <img
-          src="https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763546185/hero_qhapv6.webp"
+          src="https://res.cloudinary.com/dq8drlcks/image/upload/w_1335,h_890,c_fill,f_auto,q_auto/hero_qhapv6.webp"
+          srcSet="
+            https://res.cloudinary.com/dq8drlcks/image/upload/w_768,h_512,c_fill,f_auto,q_auto/hero_qhapv6.webp 768w,
+            https://res.cloudinary.com/dq8drlcks/image/upload/w_1024,h_682,c_fill,f_auto,q_auto/hero_qhapv6.webp 1024w,
+            https://res.cloudinary.com/dq8drlcks/image/upload/w_1335,h_890,c_fill,f_auto,q_auto/hero_qhapv6.webp 1335w
+          "
+          sizes="(max-width: 768px) 768px, (max-width: 1024px) 1024px, 1335px"
           alt="Eagle’s Vision Diagnostics Centre"
           className="hero-image"
           loading="lazy"

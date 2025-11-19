@@ -1,39 +1,16 @@
 import React from "react";
 import "../../styles/ServicesShowcase.css";
 
-// Cloudinary optimized URLs
 const services = [
-  {
-    name: "Pathology",
-    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545498/pathology_ruqppo.png",
-  },
-  {
-    name: "X-Ray",
-    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545535/xray_iixsyk.png",
-  },
-  {
-    name: "ECG",
-    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545566/ecg_mntgny.png",
-  },
-  {
-    name: "Ultrasound",
-    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545519/ultrasound_adu9vf.png",
-  },
-  {
-    name: "Blood Test",
-    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545429/bloodtest_hirwqw.png",
-  },
-  {
-    name: "CT Scan",
-    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545578/ctscan_msrzu8.png",
-  },
-  {
-    name: "MRI",
-    img: "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763545488/mri_pgjhyj.png",
-  },
+  { name: "Pathology", img: "pathology_ruqppo.png" },
+  { name: "X-Ray", img: "xray_iixsyk.png" },
+  { name: "ECG", img: "ecg_mntgny.png" },
+  { name: "Ultrasound", img: "ultrasound_adu9vf.png" },
+  { name: "Blood Test", img: "bloodtest_hirwqw.png" },
+  { name: "CT Scan", img: "ctscan_msrzu8.png" },
+  { name: "MRI", img: "mri_pgjhyj.png" },
 ];
 
-// Duplicate once to maintain infinite scroll effect
 const doubledServices = [...services, ...services];
 
 const ServicesShowcase = () => {
@@ -44,7 +21,16 @@ const ServicesShowcase = () => {
           {doubledServices.map((service, index) => (
             <div className="service-item" key={index}>
               <div className="circle-image">
-                <img src={service.img} alt={service.name} loading="lazy" />
+                <img
+                  src={`https://res.cloudinary.com/dq8drlcks/image/upload/w_124,h_124,c_fill,f_auto,q_auto/${service.img}`}
+                  srcSet={`
+                    https://res.cloudinary.com/dq8drlcks/image/upload/w_156,h_156,c_fill,f_auto,q_auto/${service.img} 156w,
+                    https://res.cloudinary.com/dq8drlcks/image/upload/w_124,h_124,c_fill,f_auto,q_auto/${service.img} 124w
+                  `}
+                  sizes="(max-width: 768px) 156px, 124px"
+                  alt={service.name}
+                  loading="lazy"
+                />
               </div>
               <p className="service-name">{service.name}</p>
             </div>
