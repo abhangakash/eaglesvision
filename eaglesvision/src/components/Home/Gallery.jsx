@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/homegallery.css";
 
-import img1 from "../../assets/img1.JPG";
-import img2 from "../../assets/img2.JPG";
-import img3 from "../../assets/img3.JPG";
-import img4 from "../../assets/img4.JPG";
-import img5 from "../../assets/img5.JPG";
-import img6 from "../../assets/img6.JPG";
-
-const images = [img1, img2, img3, img4, img5, img6];
+const images = [
+  "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544258/img1_eibgwi.jpg",
+  "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544271/img2_jabk8y.jpg",
+  "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544284/img3_c44r0q.jpg",
+  "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544294/img4_deg4yt.jpg",
+  "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544304/img5_ybrrrc.jpg",
+  "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544313/img6_tfe4jz.jpg",
+];
 
 const HomeGallery = () => {
   return (
