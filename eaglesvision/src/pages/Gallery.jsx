@@ -3,67 +3,60 @@ import "../styles/gallery.css";
 
 import { Helmet } from "react-helmet-async";
 
-import img1 from "../assets/img1.JPG";
-import img2 from "../assets/img2.JPG";
-import img3 from "../assets/img3.JPG";
-import img4 from "../assets/img4.JPG";
-import img5 from "../assets/img5.JPG";
-import img6 from "../assets/img6.JPG";
-import img7 from "../assets/img7.JPG";
-
 export default function Gallery() {
-  const images = [img1, img2, img3, img4, img5, img6, img7];
+  const images = [
+    "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544258/img1_eibgwi.jpg",
+    "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544271/img2_jabk8y.jpg",
+    "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544284/img3_c44r0q.jpg",
+    "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544294/img4_deg4yt.jpg",
+    "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544304/img5_ybrrrc.jpg",
+    "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544313/img6_tfe4jz.jpg",
+    "https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763544323/img7_suwasq.jpg",
+  ];
 
   return (
     <>
-      {/* --- SEO --- */}
       <Helmet>
         <title>Gallery | Eagle’s Vision Diagnostics Centre</title>
         <meta
           name="description"
-          content="Explore the modern diagnostic facilities at Eagle’s Vision Diagnostics Centre in Ravet Pune. View our labs, imaging rooms, and patient-friendly environment."
-        />
-        <meta
-          name="keywords"
-          content="Diagnostic Centre Gallery, Lab Images, X-Ray Facility, Pathology Lab, Eagle’s Vision Diagnostics, Ravet Pune"
+          content="Explore the modern diagnostic facilities at Eagle’s Vision Diagnostics Centre in Ravet Pune."
         />
       </Helmet>
 
-      {/* --- Page Content --- */}
       <div className="gallery-page">
-        {/* Hero Section */}
         <section className="gallery-hero">
           <div className="hero-content">
             <h1>Our Modern Diagnostic Centre</h1>
             <p>
               Discover our advanced labs, imaging rooms, and patient-friendly environment
-              designed to deliver precision, comfort, and care.
+              designed for precision and care.
             </p>
           </div>
         </section>
 
-        {/* Intro */}
         <section className="gallery-intro">
           <h2>Explore Our World-Class Facilities</h2>
           <p>
-            Every space inside <strong>Eagle’s Vision Diagnostics Centre</strong> has been
-            carefully designed — ensuring accuracy, hygiene, and a modern healthcare experience
-            powered by technology and compassion.
+            Every space inside <strong>Eagle’s Vision Diagnostics Centre</strong> is crafted
+            for accuracy, hygiene, and modern healthcare.
           </p>
         </section>
 
-        {/* Uniform Image Grid */}
         <section className="gallery-grid-section">
           <div className="gallery-grid uniform-grid">
             {images.map((img, index) => (
               <div key={index} className="gallery-item">
-                <img src={img} alt={`Facility ${index + 1}`} loading="lazy" />
+                <img
+                  src={img}
+                  alt={`Facility ${index + 1}`}
+                  loading="lazy"
+                />
               </div>
             ))}
           </div>
         </section>
 
-        {/* Footer Quote */}
         <section className="gallery-footer">
           <p>“Delivering excellence in diagnostics — where every detail matters.”</p>
         </section>
