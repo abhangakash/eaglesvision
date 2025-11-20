@@ -61,85 +61,74 @@ export default function Booking() {
 
   const XRAY_SERVICES = ["X-ray", "ECG", "Echocardiography"];
 
-  const onSubmit = (data) => {
-    const selectedServicesArray = data.services || [];
+ const onSubmit = (data) => {
+  const selectedServicesArray = data.services || [];
 
-    const servicesList = selectedServicesArray
-      .filter((s) => s !== "Other")
-      .join(", ");
+  const servicesList = selectedServicesArray
+    .filter((s) => s !== "Other")
+    .join(", ");
 
-    const otherServiceText = data.otherService
-      ? ` & Other: ${data.otherService}`
-      : "";
+  const otherServiceText = data.otherService
+    ? ` & Other: ${data.otherService}`
+    : "";
 
-    const selectedServices = `${servicesList}${otherServiceText}`;
+  const selectedServices = `${servicesList}${otherServiceText}`;
 
-    const hasLab = selectedServicesArray.some((s) =>
-      LAB_SERVICES.includes(s)
-    );
-    const hasXray = selectedServicesArray.some((s) =>
-      XRAY_SERVICES.includes(s)
-    );
-    const hasOnlyOther =
-      selectedServicesArray.length === 1 &&
-      selectedServicesArray.includes("Other");
+  const hasLab = selectedServicesArray.some((s) => LAB_SERVICES.includes(s));
+  const hasXray = selectedServicesArray.some((s) => XRAY_SERVICES.includes(s));
+  const hasOnlyOther =
+    selectedServicesArray.length === 1 &&
+    selectedServicesArray.includes("Other");
 
-    let targetNumbers = [];
+  let targetNumbers = [];
 
-    if (hasLab) targetNumbers.push(LAB_WHATSAPP);
-    if (hasXray) targetNumbers.push(XRAY_WHATSAPP);
+  if (hasLab) targetNumbers.push(LAB_WHATSAPP);
+  if (hasXray) targetNumbers.push(XRAY_WHATSAPP);
 
-    if (!hasLab && !hasXray && hasOnlyOther) {
-      targetNumbers = [LAB_WHATSAPP];
-    }
+  if (!hasLab && !hasXray && hasOnlyOther) {
+    targetNumbers = [LAB_WHATSAPP];
+  }
 
-    let locationDetails;
-    if (data.visitType === "center") {
-      locationDetails = `📍 Center: ${data.centerLocation}`;
-    } else {
-      const fullAddress = `${data.addressLine1}${
-        data.addressLine2 ? ", " + data.addressLine2 : ""
-      }, ${data.city} - ${data.pin}`;
+  let locationDetails;
 
-      locationDetails = `🏠 Home Address: ${fullAddress}`;
-    }
+  if (data.visitType === "center") {
+    locationDetails = `📍 Center: ${data.centerLocation}`;
+  } else {
+    const fullAddress = `${data.addressLine1}${
+      data.addressLine2 ? ", " + data.addressLine2 : ""
+    }, ${data.city} - ${data.pin}`;
+    locationDetails = `🏠 Home Address: ${fullAddress}`;
+  }
 
-    // --- FIX FOR IPHONE WHATSAPP MESSAGE CUTTING TEXT ---
-const messageLines = [
-  "*✨ New Appointment Request! ✨*",
-  "-------------------------------------------------",
-  `👤 *Name*: ${data.name}`,
-  `📱 *Phone*: ${data.phone}`,
-  `📝 *Service(s)*: ${selectedServices}`,
-  `✅ *Visit Type*: ${data.visitType === "center" ? "At Centre" : "At Home"}`,
-  `🗺️ ${locationDetails}`,
-  `📅 *Date & Time*: ${data.date} at ${data.time}`,
-  `💬 *Notes*: ${data.notes || "None provided"}`,
-  "-------------------------------------------------"
-];
+  // iPhone Safe Message
+  const messageLines = [
+    "*✨ New Appointment Request! ✨*",
+    "-------------------------------------------------",
+    `👤 *Name*: ${data.name}`,
+    `📱 *Phone*: ${data.phone}`,
+    `📝 *Service(s)*: ${selectedServices}`,
+    `✅ *Visit Type*: ${data.visitType === "center" ? "At Centre" : "At Home"}`,
+    `🗺️ ${locationDetails}`,
+    `📅 *Date & Time*: ${data.date} at ${data.time}`,
+    `💬 *Notes*: ${data.notes || "None provided"}`,
+    "-------------------------------------------------"
+  ];
 
-// Join lines safely (iPhone compatible)
-const message = messageLines.join("%0A");
+  const message = messageLines.join("%0A");
+  const encodedMessage = encodeURIComponent(message);
 
-// Encode final message
-const encodedMessage = encodeURIComponent(message);
+  targetNumbers.forEach((num) => {
+    window.open(`https://wa.me/${num}?text=${encodedMessage}`, "_blank");
+  });
 
-// Open WhatsApp tabs
-targetNumbers.forEach((num) => {
-  window.open(`https://wa.me/${num}?text=${encodedMessage}`, "_blank");
-});
+  alert("A new WhatsApp tab has opened. Please send the message to complete your booking!");
 
-alert("A new WhatsApp tab has opened. Please send the message to complete your booking!");
+  // 👉 KEEP ONLY THIS RESET (AFTER WhatsApp opens)
+  reset();
+  setServiceOther(false);
+  setVisitType("center");
+};
 
-reset();
-setServiceOther(false);
-setVisitType("center");
-
-
-    reset();
-    setServiceOther(false);
-    setVisitType("center");
-  };
 
   const validateName = (value) => {
     if (!/^[A-Za-z ]+$/.test(value)) return "Only letters and spaces allowed";
