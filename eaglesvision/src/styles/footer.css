@@ -1,7 +1,7 @@
 .footer {
   background: linear-gradient(270deg, #0d1b2a, #1b263b, #415a77, #778da9);
   background-size: 800% 800%;
-  animation: gradientShift 20s ease infinite;
+  animation: gradientShift 5s ease infinite;
   color: #c9d4f9;
   padding: 3rem 1.5rem 4rem 1.5rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
