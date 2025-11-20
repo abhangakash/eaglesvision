@@ -1,6 +1,10 @@
 .accreditation-section {
   padding: 1px 20px;
-  background: linear-gradient(to right, rgba(173, 216, 230, 0.6), rgba(249, 251, 255, 1));
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.7),   /* dark fog on the left */
+    rgba(249, 251, 255, 1) /* fades into your original background */
+  );
   text-align: center;
   font-family: "Segoe UI", sans-serif;
 }
