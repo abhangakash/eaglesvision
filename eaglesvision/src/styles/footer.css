@@ -1,8 +1,26 @@
 .footer {
-  background-color: #13294b;
+  background: linear-gradient(135deg, #0f1c3f, #13294b, #1e3a8a);
   color: #c9d4f9;
   padding: 3rem 1.5rem 4rem 1.5rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle animated gradient shimmer */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -50%;
+  width: 200%; height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
+  animation: shimmer 8s linear infinite;
+  pointer-events: none;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-30%); }
+  50% { transform: translateX(30%); }
+  100% { transform: translateX(-30%); }
 }
 
 .footer-top {
@@ -11,11 +29,21 @@
   gap: 2.5rem;
   max-width: 1280px;
   margin: 0 auto;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.2s ease forwards;
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .footer-col {
   flex: 1 1 250px;
   min-width: 200px;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+.footer-col:hover {
+  transform: translateY(-6px);
 }
 
 /* About */
@@ -24,6 +52,11 @@
   font-size: 1.85rem;
   margin-bottom: 1rem;
   color: #d9e0ff;
+  animation: fadeInLeft 1.2s ease forwards;
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 .footer-about p {
@@ -43,6 +76,11 @@
   font-size: 1.25rem;
   margin-bottom: 1rem;
   color: #a7b3f2;
+  animation: fadeInRight 1.2s ease forwards;
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 .footer-links-services ul {
@@ -57,12 +95,12 @@
 .footer-links-services li a {
   color: #e4e9fc;
   text-decoration: none;
-  transition: color 0.25s;
+  transition: color 0.25s, transform 0.25s;
 }
-
 .footer-links-services li a:hover {
   color: #6b7dfa;
   text-decoration: underline;
+  transform: translateX(4px);
 }
 
 /* Contact */
@@ -87,7 +125,6 @@
   color: #aed2f1;
   transition: color 0.25s ease;
 }
-
 .footer-contact a:hover {
   color: #6b7dfa;
 }
@@ -102,23 +139,24 @@
   display: flex;
   gap: 0.8rem;
   margin-top: 0.5rem;
+  animation: fadeUp 1.5s ease forwards;
 }
 
 .footer-socials a {
   display: flex;
   width: 36px;
   height: 36px;
-  background: #2a3920;
+  background: #24335a;
   color: #a8b7ff;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
   transition: all 0.3s ease;
 }
-
 .footer-socials a:hover {
   background: #6b7dfa;
   color: #fff;
+  transform: scale(1.1) rotate(5deg);
 }
 
 /* Powered by */
@@ -139,7 +177,6 @@
   font-weight: 600;
   transition: all 0.3s ease;
 }
-
 .footer-poweredby a:hover .company-name {
   color: #6b7dfa;
 }
@@ -161,6 +198,7 @@
   padding: 1rem 0 0;
   text-align: center;
   color: #8e95ad;
+  animation: fadeUp 1.8s ease forwards;
 }
 
 /* Responsive */
