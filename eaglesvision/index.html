@@ -1,10 +1,8 @@
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ============================
-       JSON-LD SCHEMA
-       ============================ -->
+  <!-- JSON-LD Schema 1 -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -15,6 +13,7 @@
   }
   </script>
 
+  <!-- JSON-LD Schema 2 -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -53,12 +52,59 @@
   }
   </script>
 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <!-- ============================
-       SEO META
+       PERFORMANCE OPTIMIZATIONS
        ============================ -->
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- PRELOAD your Vite CSS (REQUIRED for LCP fix) -->
+  <!-- ❗ Replace index-D6oIgIad.css with the actual file in /dist/assets/ -->
+  <link rel="preload" href="/assets/index-D6oIgIad.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/index-D6oIgIad.css"></noscript>
+
+  <!-- Defer FontAwesome (no longer render-blocking) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    media="print"
+    onload="this.media='all'"
+  >
+
+  <!-- Preload Google Fonts (removes 750ms delay) -->
+  <link
+    rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+    as="style"
+    onload="this.rel='stylesheet'"
+  >
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+    >
+  </noscript>
+
+  <!-- ============================
+       FAVICON
+       ============================ -->
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="48x48"/>
+
+  <!-- ============================
+       SEO META TAGS
+       ============================ -->
+
   <title>Eagle’s Vision Diagnostics Centre | Digital X-Ray, Pathology Lab & Diagnostic Services in Ravet Pune</title>
+
   <meta name="description" content="Eagle’s Vision Diagnostics Centre in Ravet Pune offers Digital X-Ray, Portable X-Ray, Pathology Lab Tests, Blood/Urine/Stool Tests, Biochemistry, Serology, Microbiology, PCR, Allergy Tests, Physiotherapy, Home Sample Collection & Online Reports. Fast, accurate and reliable diagnostics you can trust.">
+
   <meta name="keywords" content="Diagnostic Center Ravet, Digital X-Ray Pune, Portable X-Ray, Pathology Lab Ravet, Biochemistry Tests, Blood Test Pune, Urine Test, Microbiology Lab, PCR Testing Pune, Allergy Tests, Physiotherapy Ravet, Home Sample Collection, Diagnostic Centre Near Me">
+
   <meta name="author" content="Eagle’s Vision Diagnostics Centre">
   <meta name="robots" content="index, follow">
 
@@ -73,34 +119,10 @@
   <meta name="twitter:description" content="Complete diagnostic services including Digital X-Ray, Portable X-Ray, Blood Tests, Biochemistry, Microbiology, Serology, Allergy Tests, PCR & Physiotherapy. Home sample collection available.">
   <meta name="twitter:image" content="https://eaglesvisiondiagnosticscenter.com/favicon.png">
 
-  <!-- ============================
-       FAVICON
-       ============================ -->
-  <link rel="icon" type="image/png" href="/favicon.png" sizes="48x48"/>
-
-  <!-- ============================
-       PERFORMANCE OPTIMIZATIONS
-       ============================ -->
-  <!-- Preconnects -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Google Fonts Preload -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" as="style" onload="this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
-  </noscript>
-
-  <!-- Main CSS Preload -->
-  <link rel="preload" href="/assets/index-D6oIgIad.css" as="style" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/assets/index-D6oIgIad.css"></noscript>
-
-  <!-- Defer FontAwesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    media="print"
-    onload="this.media='all'"
-  >
-
 </head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
