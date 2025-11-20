@@ -104,31 +104,37 @@ export default function Booking() {
       locationDetails = `🏠 Home Address: ${fullAddress}`;
     }
 
-    const message = `
-*✨ New Appointment Request! ✨*
--------------------------------------------------
-👤 *Name*: ${data.name}
-📱 *Phone*: ${data.phone}
-📝 *Service(s)*: ${selectedServices}
-✅ *Visit Type*: ${
-      data.visitType === "center" ? "At Centre" : "At Home"
-    }
-🗺️ ${locationDetails}
-📅 *Date & Time*: ${data.date} at ${data.time}
-💬 *Notes*: ${data.notes || "None provided"}
--------------------------------------------------
-`;
+    // --- FIX FOR IPHONE WHATSAPP MESSAGE CUTTING TEXT ---
+const messageLines = [
+  "*✨ New Appointment Request! ✨*",
+  "-------------------------------------------------",
+  `👤 *Name*: ${data.name}`,
+  `📱 *Phone*: ${data.phone}`,
+  `📝 *Service(s)*: ${selectedServices}`,
+  `✅ *Visit Type*: ${data.visitType === "center" ? "At Centre" : "At Home"}`,
+  `🗺️ ${locationDetails}`,
+  `📅 *Date & Time*: ${data.date} at ${data.time}`,
+  `💬 *Notes*: ${data.notes || "None provided"}`,
+  "-------------------------------------------------"
+];
 
-    const encodedMessage = encodeURIComponent(message);
+// Join lines safely (iPhone compatible)
+const message = messageLines.join("%0A");
 
-    targetNumbers.forEach((num) => {
-      const url = `https://wa.me/${num}?text=${encodedMessage}`;
-      window.open(url, "_blank");
-    });
+// Encode final message
+const encodedMessage = encodeURIComponent(message);
 
-    alert(
-      "A new WhatsApp tab has opened. Please send the message to complete your booking!"
-    );
+// Open WhatsApp tabs
+targetNumbers.forEach((num) => {
+  window.open(`https://wa.me/${num}?text=${encodedMessage}`, "_blank");
+});
+
+alert("A new WhatsApp tab has opened. Please send the message to complete your booking!");
+
+reset();
+setServiceOther(false);
+setVisitType("center");
+
 
     reset();
     setServiceOther(false);
