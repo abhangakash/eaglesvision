@@ -1,10 +1,6 @@
 .accreditation-section {
   padding: 1px 20px;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.7),   /* dark fog on the left */
-    rgba(249, 251, 255, 1) /* fades into your original background */
-  );
+  background: #f9fbff;
   text-align: center;
   font-family: "Segoe UI", sans-serif;
 }
@@ -30,6 +26,7 @@
 }
 
 .accreditation-card {
+  position: relative; /* important for fog overlay */
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
@@ -37,6 +34,7 @@
   width: 300px;
   transition: all 0.3s ease;
   border-top: 4px solid #003366;
+  overflow: hidden; /* keep fog inside card */
 }
 
 .accreditation-card:hover {
@@ -62,6 +60,25 @@
   font-size: 0.95rem;
   color: #555;
   line-height: 1.4;
+}
+
+/* Fog overlay effect */
+.accreditation-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(173,216,230,0.25) 0%, transparent 70%);
+  animation: fogMove 8s linear infinite;
+  pointer-events: none; /* allow clicks through fog */
+}
+
+@keyframes fogMove {
+  0% { transform: translateX(-30%); opacity: 0.6; }
+  50% { transform: translateX(30%); opacity: 0.3; }
+  100% { transform: translateX(-30%); opacity: 0.6; }
 }
 
 /* Responsive */
