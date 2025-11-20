@@ -93,7 +93,6 @@ export default function Booking() {
       targetNumbers = [LAB_WHATSAPP];
     }
 
-    // ✅ Final updated address logic (no district/state)
     let locationDetails;
     if (data.visitType === "center") {
       locationDetails = `📍 Center: ${data.centerLocation}`;
@@ -254,6 +253,21 @@ export default function Booking() {
               Select Service Type <span style={{ color: "red" }}>*</span>
             </label>
 
+            {/* ✅ X-ray Services ABOVE Lab Services */}
+            <h4 style={{ marginTop: "10px" }}>🩻 X-ray Services</h4>
+            <div className="checkbox-group">
+              {XRAY_SERVICES.map((service) => (
+                <label key={service}>
+                  <input
+                    type="checkbox"
+                    value={service}
+                    {...register("services")}
+                  />
+                  {service}
+                </label>
+              ))}
+            </div>
+
             <h4 style={{ marginTop: "10px" }}>🧪 Lab Services</h4>
             <div className="checkbox-group">
               {LAB_SERVICES.map((service) => (
@@ -265,20 +279,6 @@ export default function Booking() {
                       validate: (val) =>
                         val.length > 0 || "Select at least one service",
                     })}
-                  />
-                  {service}
-                </label>
-              ))}
-            </div>
-
-            <h4 style={{ marginTop: "10px" }}>🩻 X-ray Services</h4>
-            <div className="checkbox-group">
-              {XRAY_SERVICES.map((service) => (
-                <label key={service}>
-                  <input
-                    type="checkbox"
-                    value={service}
-                    {...register("services")}
                   />
                   {service}
                 </label>
@@ -344,9 +344,7 @@ export default function Booking() {
               </label>
             </div>
 
-            {errors.visitType && (
-              <p className="error">Select a visit type</p>
-            )}
+            {errors.visitType && <p className="error">Select a visit type</p>}
           </div>
 
           {/* CENTER */}
@@ -404,8 +402,6 @@ export default function Booking() {
                 {...register("city", { required: "City is required" })}
               />
               {errors.city && <p className="error">{errors.city.message}</p>}
-
-              {/* District + State removed */}
 
               <input
                 type="text"
