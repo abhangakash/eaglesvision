@@ -9,15 +9,29 @@ import Gallery from "./pages/Gallery";
 import AboutUs from "./pages/Aboutus";
 import Blog from "./pages/Blog";
 import BlogList from "./pages/BlogList"; 
-import NotFound from "./pages/NotFound"; //
-
-
+import NotFound from "./pages/NotFound"; 
 import BottomNav from "./components/BottomNav";
 import "./styles/main.css";
 
+// ---------------- ScrollToTop Component ---------------- //
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+// ---------------- App Component ---------------- //
 export default function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* ensures scroll-to-top on route change */}
       <Navbar />
       <main className="main-content">
         <Routes>

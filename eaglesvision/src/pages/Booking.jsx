@@ -31,8 +31,6 @@ export default function Booking() {
     reset,
   } = useForm();
 
-  // ---------------------- NEW SERVICE LISTS ---------------------- //
-
   const LAB_SERVICES = [
     "Blood tests",
     "Urine tests",
@@ -61,13 +59,7 @@ export default function Booking() {
     "Autoimmune disorder testing",
   ];
 
-  const XRAY_SERVICES = [
-    "X-ray",
-    "ECG",
-    "Echocardiography",
-  ];
-
-  // ---------------------- SUBMIT LOGIC ---------------------- //
+  const XRAY_SERVICES = ["X-ray", "ECG", "Echocardiography"];
 
   const onSubmit = (data) => {
     const selectedServicesArray = data.services || [];
@@ -82,7 +74,6 @@ export default function Booking() {
 
     const selectedServices = `${servicesList}${otherServiceText}`;
 
-    // Determine categories selected
     const hasLab = selectedServicesArray.some((s) =>
       LAB_SERVICES.includes(s)
     );
@@ -93,21 +84,25 @@ export default function Booking() {
       selectedServicesArray.length === 1 &&
       selectedServicesArray.includes("Other");
 
-    // Determine which WhatsApp numbers to send to
     let targetNumbers = [];
 
     if (hasLab) targetNumbers.push(LAB_WHATSAPP);
     if (hasXray) targetNumbers.push(XRAY_WHATSAPP);
 
     if (!hasLab && !hasXray && hasOnlyOther) {
-      targetNumbers = [LAB_WHATSAPP]; // only other → lab
+      targetNumbers = [LAB_WHATSAPP];
     }
 
+    // ✅ Final updated address logic (no district/state)
     let locationDetails;
     if (data.visitType === "center") {
       locationDetails = `📍 Center: ${data.centerLocation}`;
     } else {
-      locationDetails = `🏠 Home Address: ${data.addressLine1}, ${data.city}, ${data.district}, ${data.state} - ${data.pin}`;
+      const fullAddress = `${data.addressLine1}${
+        data.addressLine2 ? ", " + data.addressLine2 : ""
+      }, ${data.city} - ${data.pin}`;
+
+      locationDetails = `🏠 Home Address: ${fullAddress}`;
     }
 
     const message = `
@@ -128,7 +123,6 @@ export default function Booking() {
 
     const encodedMessage = encodeURIComponent(message);
 
-    // open WhatsApp for each number
     targetNumbers.forEach((num) => {
       const url = `https://wa.me/${num}?text=${encodedMessage}`;
       window.open(url, "_blank");
@@ -143,18 +137,15 @@ export default function Booking() {
     setVisitType("center");
   };
 
-  // ---------------------- Validations (kept same) ---------------------- //
-
   const validateName = (value) => {
     if (!/^[A-Za-z ]+$/.test(value)) return "Only letters and spaces allowed";
     if (value.trim().length < 3) return "Name must be at least 3 characters";
     return true;
   };
 
-  const validatePhone =
-    (value) =>
-      /^[6-9][0-9]{9}$/.test(value) ||
-      "Must be 10 digits, starting with 6, 7, 8, or 9";
+  const validatePhone = (value) =>
+    /^[6-9][0-9]{9}$/.test(value) ||
+    "Must be 10 digits, starting with 6, 7, 8, or 9";
 
   const handleNameKeyPress = (e) => {
     if (!/^[a-zA-Z\s]$/.test(e.key)) e.preventDefault();
@@ -173,8 +164,6 @@ export default function Booking() {
     setServiceOther(checked);
     if (!checked) setValue("otherService", "");
   };
-
-  // ---------------------- Time Logic (unchanged) ---------------------- //
 
   const today = new Date();
   const minDate = today.toISOString().split("T")[0];
@@ -204,15 +193,6 @@ export default function Booking() {
     }
   }, [visitType]);
 
-  const indianStates = [
-    "Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat",
-    "Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh",
-    "Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab",
-    "Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh",
-    "Uttarakhand","West Bengal","Delhi","Puducherry","Chandigarh",
-    "Jammu and Kashmir","Ladakh"
-  ];
-
   return (
     <section className="booking" id="booking">
       <div className="booking-container">
@@ -229,7 +209,7 @@ export default function Booking() {
 
         <form className="booking-form" onSubmit={handleSubmit(onSubmit)} noValidate>
 
-          {/* ---------------------- NAME ---------------------- */}
+          {/* NAME */}
           <div className="form-group">
             <label htmlFor="name">
               <FaUser size={ICON_SIZE} style={{ marginRight: "8px" }} />
@@ -248,7 +228,7 @@ export default function Booking() {
             {errors.name && <p className="error">{errors.name.message}</p>}
           </div>
 
-          {/* ---------------------- PHONE ---------------------- */}
+          {/* PHONE */}
           <div className="form-group">
             <label htmlFor="phone">
               <FaMobileAlt size={ICON_SIZE} style={{ marginRight: "8px" }} />
@@ -267,9 +247,7 @@ export default function Booking() {
             {errors.phone && <p className="error">{errors.phone.message}</p>}
           </div>
 
-         
-
-          {/* ---------------------- SERVICES ---------------------- */}
+          {/* SERVICES */}
           <div className="form-group">
             <label>
               <FaStethoscope size={ICON_SIZE} style={{ marginRight: "8px" }} />
@@ -336,7 +314,7 @@ export default function Booking() {
             )}
           </div>
 
-          {/* ---------------------- VISIT TYPE ---------------------- */}
+          {/* VISIT TYPE */}
           <div className="form-group horizontal-group">
             <label>
               <FaCheckCircle size={ICON_SIZE} style={{ marginRight: "8px" }} />
@@ -371,7 +349,7 @@ export default function Booking() {
             )}
           </div>
 
-          {/* ---------------------- CENTER LOCATION ---------------------- */}
+          {/* CENTER */}
           {visitType === "center" && (
             <div className="form-group">
               <label>
@@ -380,7 +358,9 @@ export default function Booking() {
               </label>
 
               <select {...register("centerLocation", { required: true })}>
-                <option value="Shop No. 10, 1st Floor, Ganesh Bella Montana, Shinde Wasti Chowk, Ravet, Pune-412101">Shop No. 10, 1st Floor, Ganesh Bella Montana, Shinde Wasti Chowk, Ravet, Pune-412101</option>
+                <option value="Shop No. 10, 1st Floor, Ganesh Bella Montana, Shinde Wasti Chowk, Ravet, Pune-412101">
+                  Shop No. 10, 1st Floor, Ganesh Bella Montana, Shinde Wasti Chowk, Ravet, Pune-412101
+                </option>
                 <option disabled>Other locations - Coming soon</option>
               </select>
 
@@ -390,7 +370,7 @@ export default function Booking() {
             </div>
           )}
 
-          {/* ---------------------- HOME ADDRESS ---------------------- */}
+          {/* HOME ADDRESS */}
           {visitType === "home" && (
             <div className="form-group">
               <label>
@@ -425,30 +405,7 @@ export default function Booking() {
               />
               {errors.city && <p className="error">{errors.city.message}</p>}
 
-              <input
-                type="text"
-                placeholder="Enter District Name"
-                onKeyPress={handleAddressKeyPress}
-                {...register("district", { required: "District is required" })}
-              />
-              {errors.district && (
-                <p className="error">{errors.district.message}</p>
-              )}
-
-              <select
-                {...register("state", { required: "State is required" })}
-                defaultValue=""
-              >
-                <option value="" disabled>
-                  Select State
-                </option>
-                {indianStates.map((state) => (
-                  <option key={state} value={state}>
-                    {state}
-                  </option>
-                ))}
-              </select>
-              {errors.state && <p className="error">{errors.state.message}</p>}
+              {/* District + State removed */}
 
               <input
                 type="text"
@@ -470,7 +427,7 @@ export default function Booking() {
             </div>
           )}
 
-          {/* ---------------------- DATE + TIME ---------------------- */}
+          {/* DATE + TIME */}
           <div className="form-group horizontal-group">
             <div>
               <label>
@@ -505,7 +462,7 @@ export default function Booking() {
             </div>
           </div>
 
-          {/* ---------------------- NOTES ---------------------- */}
+          {/* NOTES */}
           <div className="form-group">
             <label>
               <FaStickyNote size={ICON_SIZE} style={{ marginRight: "8px" }} />
@@ -523,7 +480,7 @@ export default function Booking() {
             {errors.notes && <p className="error">{errors.notes.message}</p>}
           </div>
 
-          {/* ---------------------- SUBMIT ---------------------- */}
+          {/* SUBMIT */}
           <button type="submit" className="submit-btn" disabled={isSubmitting}>
             {isSubmitting
               ? "Generating WhatsApp Message…"

@@ -2,7 +2,16 @@ import React from 'react';
 import { FaCalendarAlt, FaUserMd, FaChevronLeft } from 'react-icons/fa';
 import '../../styles/blog-listing.css'; 
 
-const POST_IMAGE_PLACEHOLDER = "";
+// Cloudinary optimized image (f_auto + q_auto)
+const POST_IMAGE_PLACEHOLDER = (
+    <img 
+        src="https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763622060/istockphoto-177440807-612x612-1_dkfwty.jpg" 
+        alt="Lab Sample Preparation"
+        style={{ width: "100%", height: "auto", borderRadius: "10px" }}
+        loading="lazy"
+    />
+);
+
 const AUTHOR_NAME = "EaglesVision Lab Director";
 
 export default function Blog3() {
@@ -16,10 +25,10 @@ export default function Blog3() {
                 <p>The accuracy of your diagnostic report begins before the sample is even collected. Following proper pre-test protocols ensures that the results reflect your true physiological state, not temporary dietary or activity factors.</p>
                 
                 <h3>Fasting Tests (Lipid Profile, Blood Sugar)</h3>
-                <p>For most fasting blood tests, you must abstain from food and caloric beverages (including juice and coffee with sugar/milk) for **10 to 12 hours** prior to collection. You may drink plain water. This is critical because consuming food can temporarily elevate glucose and triglyceride levels, leading to misleading results.</p>
+                <p>For most fasting blood tests, you must abstain from food and caloric beverages (including juice and coffee with sugar/milk) for <strong>10 to 12 hours</strong> prior to collection. You may drink plain water. This is critical because consuming food can temporarily elevate glucose and triglyceride levels, leading to misleading results.</p>
 
                 <h3>Medications and Supplements</h3>
-                <p>Always inform the phlebotomist or our booking desk about any medications or supplements you are taking. While you should generally take prescribed life-saving drugs, certain vitamins or over-the-counter medications can interfere with specific hormone or chemistry tests. **Never stop a prescription without consulting your doctor.**</p>
+                <p>Always inform the phlebotomist or our booking desk about any medications or supplements you are taking. While you should generally take prescribed life-saving drugs, certain vitamins or over-the-counter medications can interfere with specific hormone or chemistry tests. <strong>Never stop a prescription without consulting your doctor.</strong></p>
 
                 <h4>Activity and Stress</h4>
                 <p>Heavy exercise or high levels of stress immediately before the test can transiently affect certain markers (like creatinine kinase or white blood cell counts). Try to relax and avoid strenuous activity for 24 hours prior to your sample collection.</p>

@@ -2,7 +2,16 @@ import React from 'react';
 import { FaCalendarAlt, FaUserMd, FaChevronLeft } from 'react-icons/fa';
 import '../../styles/blog-listing.css'; 
 
-const POST_IMAGE_PLACEHOLDER = "";
+// Cloudinary optimized image (f_auto + q_auto)
+const POST_IMAGE_PLACEHOLDER = (
+    <img 
+        src="https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763622175/anatomy-of-the-thyroid-gland-thyroid-of-a-human-infographic-for-medical-design-illustration-vector_rcqrns.jpg" 
+        alt="Thyroid Function Test"
+        style={{ width: '100%', height: 'auto', borderRadius: '10px' }}
+        loading="lazy"
+    />
+);
+
 const AUTHOR_NAME = "EaglesVision Health Team";
 
 export default function Blog5() {
@@ -13,7 +22,7 @@ export default function Blog5() {
         image: POST_IMAGE_PLACEHOLDER,
         body: (
             <>
-                <p>The thyroid gland, located in your neck, is small but mighty, regulating metabolism, energy, and mood. When things go wrong, the effects can be widespread. The **Thyroid Function Test (TFT)** is the key to diagnosis.</p>
+                <p>The thyroid gland, located in your neck, is small but mighty, regulating metabolism, energy, and mood. When things go wrong, the effects can be widespread. The <strong>Thyroid Function Test (TFT)</strong> is the key to diagnosis.</p>
                 
                 <h3>The Master Regulator: TSH</h3>
                 <p>Thyroid Stimulating Hormone (TSH) is produced by the pituitary gland and signals the thyroid to make more hormones. TSH is the most common first-line test. High TSH often indicates an underactive thyroid (hypothyroidism), while low TSH can point to an overactive thyroid (hyperthyroidism).</p>

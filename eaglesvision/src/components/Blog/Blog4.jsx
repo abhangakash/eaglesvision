@@ -2,7 +2,16 @@ import React from 'react';
 import { FaCalendarAlt, FaUserMd, FaChevronLeft } from 'react-icons/fa';
 import '../../styles/blog-listing.css'; 
 
-const POST_IMAGE_PLACEHOLDER = "";
+// Cloudinary optimized image (f_auto + q_auto)
+const POST_IMAGE_PLACEHOLDER = (
+    <img 
+        src="https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763622100/header-deviceguide-with-echonavigator_vg6vck.jpg" 
+        alt="Digital X-Ray Preparation"
+        style={{ width: '100%', height: 'auto', borderRadius: '10px' }}
+        loading="lazy"
+    />
+);
+
 const AUTHOR_NAME = "EaglesVision X-Ray Specialist";
 
 export default function Blog4() {
@@ -22,7 +31,7 @@ export default function Blog4() {
                 <p>We recommend wearing loose, easily removable clothing. Depending on the area being imaged, you may be asked to change into a gown. If you must wear your own clothes, ensure they are free of any metal components.</p>
 
                 <h4>Pregnancy Precaution</h4>
-                <p>If you are pregnant or suspect you may be pregnant, it is **absolutely essential** to inform the technician and your referring physician immediately. While X-rays use low-dose radiation, we take every necessary precaution, which may include postponing the test or using specialized shielding.</p>
+                <p>If you are pregnant or suspect you may be pregnant, it is <strong>absolutely essential</strong> to inform the technician and your referring physician immediately. While X-rays use low-dose radiation, we take every necessary precaution, which may include postponing the test or using specialized shielding.</p>
 
                 <p className="conclusion-note">Our state-of-the-art Digital X-Ray facility provides rapid, high-resolution imaging. Following these simple steps ensures the quality and speed of your diagnostic process.</p>
             </>

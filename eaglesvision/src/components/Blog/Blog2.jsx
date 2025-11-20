@@ -2,7 +2,16 @@ import React from 'react';
 import { FaCalendarAlt, FaUserMd, FaChevronLeft } from 'react-icons/fa';
 import '../../styles/blog-listing.css'; 
 
-const POST_IMAGE_PLACEHOLDER = "";
+// Cloudinary optimized image (f_auto + q_auto)
+const POST_IMAGE_PLACEHOLDER = (
+    <img 
+        src="https://res.cloudinary.com/dq8drlcks/image/upload/f_auto,q_auto/v1763622026/GluCare.Health-Blog-Banner-2_phnegm.png" 
+        alt="Blood Sugar Testing Illustration"
+        style={{ width: "100%", height: "auto", borderRadius: "10px" }}
+        loading="lazy"
+    />
+);
+
 const AUTHOR_NAME = "EaglesVision Health Team";
 
 export default function Blog2() {
@@ -13,13 +22,13 @@ export default function Blog2() {
         image: POST_IMAGE_PLACEHOLDER,
         body: (
             <>
-                <p>Diabetes often develops gradually, with many people living in the pre-diabetes stage without knowing it. This is why annual **Blood Sugar Screening**—including Fasting Plasma Glucose (FPG) or HbA1c—is one of the most crucial preventive tests we offer.</p>
+                <p>Diabetes often develops gradually, with many people living in the pre-diabetes stage without knowing it. This is why annual <strong>Blood Sugar Screening</strong>—including Fasting Plasma Glucose (FPG) or HbA1c—is one of the most crucial preventive tests we offer.</p>
                 
                 <h3>Understanding Pre-Diabetes</h3>
                 <p>Pre-diabetes is a condition where blood sugar levels are higher than normal but not high enough to be classified as Type 2 diabetes. This is a critical window of opportunity! Lifestyle changes made during this phase can often revert blood sugar levels to normal and prevent the onset of full diabetes.</p>
 
                 <h3>The Power of HbA1c</h3>
-                <p>While the standard Fasting Plasma Glucose test gives a snapshot of your sugar level at that moment, the **HbA1c test (Glycated Hemoglobin)** provides a clear picture of your average blood sugar control over the past three months. It is the gold standard for long-term monitoring.</p>
+                <p>While the standard Fasting Plasma Glucose test gives a snapshot of your sugar level at that moment, the <strong>HbA1c test (Glycated Hemoglobin)</strong> provides a clear picture of your average blood sugar control over the past three months. It is the gold standard for long-term monitoring.</p>
 
                 <h4>Early Detection is Key</h4>
                 <p>Uncontrolled high blood sugar damages organs, nerves, and blood vessels over time. Early detection through regular screening allows for timely intervention, protecting your eyes, kidneys, and cardiovascular system from long-term complications. Don't wait for symptoms; be proactive.</p>
