@@ -1,34 +1,8 @@
 .accreditation-section {
-  position: relative;
   padding: 1px 20px;
-  background: #f9fbff;
+  background: linear-gradient(to right, rgba(173, 216, 230, 0.6), rgba(249, 251, 255, 1));
   text-align: center;
   font-family: "Segoe UI", sans-serif;
-}
-
-.accreditation-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(173, 216, 230, 0.6), rgba(173, 216, 230, 0.1)); /* Light blue fog effect */
-  pointer-events: none; /* Ensure it doesn't interfere with user interactions */
-  z-index: -1; /* Ensure it stays behind the content */
-  animation: fogAnimation 6s ease-in-out infinite; /* Animate the fog effect */
-}
-
-@keyframes fogAnimation {
-  0% {
-    left: -100%;
-  }
-  50% {
-    left: 100%;
-  }
-  100% {
-    left: -100%;
-  }
 }
 
 .section-title {
