@@ -109,7 +109,6 @@ export default function Booking() {
 -------------------------------------------------
 👤 *Name*: ${data.name}
 📱 *Phone*: ${data.phone}
-🏥 *Department*: ${data.department}
 📝 *Service(s)*: ${selectedServices}
 ✅ *Visit Type*: ${
       data.visitType === "center" ? "At Centre" : "At Home"
