@@ -61,78 +61,82 @@ export default function Booking() {
 
   const XRAY_SERVICES = ["X-ray", "ECG", "Echocardiography"];
 
- const onSubmit = (data) => {
-  const selectedServicesArray = data.services || [];
+  const onSubmit = (data) => {
+    const selectedServicesArray = data.services || [];
 
-  const servicesList = selectedServicesArray
-    .filter((s) => s !== "Other")
-    .join(", ");
+    const servicesList = selectedServicesArray
+      .filter((s) => s !== "Other")
+      .join(", ");
 
-  const otherServiceText = data.otherService
-    ? ` & Other: ${data.otherService}`
-    : "";
+    const otherServiceText = data.otherService
+      ? ` & Other: ${data.otherService}`
+      : "";
 
-  const selectedServices = `${servicesList}${otherServiceText}`;
+    const selectedServices = `${servicesList}${otherServiceText}`;
 
-  const hasLab = selectedServicesArray.some((s) => LAB_SERVICES.includes(s));
-  const hasXray = selectedServicesArray.some((s) => XRAY_SERVICES.includes(s));
-  const hasOnlyOther =
-    selectedServicesArray.length === 1 &&
-    selectedServicesArray.includes("Other");
+    const hasLab = selectedServicesArray.some((s) => LAB_SERVICES.includes(s));
+    const hasXray = selectedServicesArray.some((s) => XRAY_SERVICES.includes(s));
+    const hasOnlyOther =
+      selectedServicesArray.length === 1 &&
+      selectedServicesArray.includes("Other");
 
-  let targetNumbers = [];
+    let targetNumbers = [];
 
-  if (hasLab) targetNumbers.push(LAB_WHATSAPP);
-  if (hasXray) targetNumbers.push(XRAY_WHATSAPP);
+    if (hasLab) targetNumbers.push(LAB_WHATSAPP);
+    if (hasXray) targetNumbers.push(XRAY_WHATSAPP);
 
-  if (!hasLab && !hasXray && hasOnlyOther) {
-    targetNumbers = [LAB_WHATSAPP];
-  }
+    if (!hasLab && !hasXray && hasOnlyOther) {
+      targetNumbers = [LAB_WHATSAPP];
+    }
 
-  let locationDetails;
+    let locationDetails;
 
-  if (data.visitType === "center") {
-    locationDetails = `📍 Center: ${data.centerLocation}`;
-  } else {
-    const fullAddress = `${data.addressLine1}${
-      data.addressLine2 ? ", " + data.addressLine2 : ""
-    }, ${data.city} - ${data.pin}`;
-    locationDetails = `🏠 Home Address: ${fullAddress}`;
-  }
+    if (data.visitType === "center") {
+      locationDetails = `📍 Center: ${data.centerLocation}`;
+    } else {
+      const fullAddress = `${data.addressLine1}${
+        data.addressLine2 ? ", " + data.addressLine2 : ""
+      }, ${data.city} - ${data.pin}`;
+      locationDetails = `🏠 Home Address: ${fullAddress}`;
+    }
 
-  // iPhone Safe Message
-  const messageLines = [
-    "*✨ New Appointment Request! ✨*",
-    "-------------------------------------------------",
-    `👤 *Name*: ${data.name}`,
-    `📱 *Phone*: ${data.phone}`,
-    `📝 *Service(s)*: ${selectedServices}`,
-    `✅ *Visit Type*: ${data.visitType === "center" ? "At Centre" : "At Home"}`,
-    `🗺️ ${locationDetails}`,
-    `📅 *Date & Time*: ${data.date} at ${data.time}`,
-    `💬 *Notes*: ${data.notes || "None provided"}`,
-    "-------------------------------------------------"
-  ];
+    // ---------------------------------------------------------
+    // ✅ FIXED WHATSAPP NEWLINE ISSUE — USING "\n"
+    // ---------------------------------------------------------
+    const messageLines = [
+      "*✨ New Appointment Request! ✨*",
+      "-------------------------------------------------",
+      `👤 *Name*: ${data.name}`,
+      `📱 *Phone*: ${data.phone}`,
+      `📝 *Service(s)*: ${selectedServices}`,
+      `✅ *Visit Type*: ${data.visitType === "center" ? "At Centre" : "At Home"}`,
+      `🗺️ ${locationDetails}`,
+      `📅 *Date & Time*: ${data.date} at ${data.time}`,
+      `💬 *Notes*: ${data.notes || "None provided"}`,
+      "-------------------------------------------------",
+    ];
 
-  const message = messageLines.join("%0A");
-  const encodedMessage = encodeURIComponent(message);
+    const message = messageLines.join("\n");
+    const encodedMessage = encodeURIComponent(message);
+    // ---------------------------------------------------------
 
-  targetNumbers.forEach((num) => {
-    window.open(`https://wa.me/${num}?text=${encodedMessage}`, "_blank");
-  });
+    targetNumbers.forEach((num) => {
+      window.open(`https://wa.me/${num}?text=${encodedMessage}`, "_blank");
+    });
 
-  alert("A new WhatsApp tab has opened. Please send the message to complete your booking!");
+    alert(
+      "A new WhatsApp tab has opened. Please send the message to complete your booking!"
+    );
 
-  // 👉 KEEP ONLY THIS RESET (AFTER WhatsApp opens)
-  reset();
-  setServiceOther(false);
-  setVisitType("center");
-};
-
+    reset();
+    setServiceOther(false);
+    setVisitType("center");
+  };
 
   const validateName = (value) => {
     if (!/^[A-Za-z ]+$/.test(value)) return "Only letters and spaces allowed";
-    if (value.trim().length < 3) return "Name must be at least 3 characters";
+    if (value.trim().length < 3)
+      return "Name must be at least 3 characters";
     return true;
   };
 
@@ -191,12 +195,15 @@ export default function Booking() {
       <div className="booking-container">
         <h2 className="booking-title">Book an Appointment</h2>
         <p className="booking-subtitle">
-          Schedule your diagnostic test with our experienced team. We'll confirm your appointment via WhatsApp.
+          Schedule your diagnostic test with our experienced team.
+          We'll confirm your appointment via WhatsApp.
         </p>
 
         {isSubmitSuccessful && (
           <div className="success-message">
-            Thank you — your appointment request has been prepared! **A new tab has opened with WhatsApp. Please send the message to complete your booking.**
+            Thank you — your appointment request has been prepared!
+            **A new tab has opened with WhatsApp. Please send the
+            message to complete your booking.**
           </div>
         )}
 
@@ -247,21 +254,18 @@ export default function Booking() {
               Select Service Type <span style={{ color: "red" }}>*</span>
             </label>
 
-            {/* ✅ X-ray Services ABOVE Lab Services */}
+            {/* XRAY */}
             <h4 style={{ marginTop: "10px" }}>🩻 X-ray Services</h4>
             <div className="checkbox-group">
               {XRAY_SERVICES.map((service) => (
                 <label key={service}>
-                  <input
-                    type="checkbox"
-                    value={service}
-                    {...register("services")}
-                  />
+                  <input type="checkbox" value={service} {...register("services")} />
                   {service}
                 </label>
               ))}
             </div>
 
+            {/* LAB */}
             <h4 style={{ marginTop: "10px" }}>🧪 Lab Services</h4>
             <div className="checkbox-group">
               {LAB_SERVICES.map((service) => (
@@ -289,9 +293,7 @@ export default function Booking() {
               Other
             </label>
 
-            {errors.services && (
-              <p className="error">{errors.services.message}</p>
-            )}
+            {errors.services && <p className="error">{errors.services.message}</p>}
 
             {serviceOther && (
               <input
@@ -341,7 +343,7 @@ export default function Booking() {
             {errors.visitType && <p className="error">Select a visit type</p>}
           </div>
 
-          {/* CENTER */}
+          {/* CENTER LOCATION */}
           {visitType === "center" && (
             <div className="form-group">
               <label>
@@ -417,7 +419,7 @@ export default function Booking() {
             </div>
           )}
 
-          {/* DATE + TIME */}
+          {/* DATE & TIME */}
           <div className="form-group horizontal-group">
             <div>
               <label>
