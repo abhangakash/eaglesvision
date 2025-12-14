@@ -35,7 +35,11 @@ export default function Booking() {
   reset,
 } = useForm({
   shouldUnregister: false,
+  defaultValues: {
+    visitType: "center",
+  },
 });
+
 
 
 
@@ -99,7 +103,8 @@ export default function Booking() {
 
     let locationDetails;
 
-    if (data.visitType === "center") {
+    if ((data.visitType || visitType) === "center") {
+
       locationDetails = `📍 Center: ${data.centerLocation}`;
     } else {
       const fullAddress = `${data.addressLine1 || ""}${
@@ -329,12 +334,12 @@ export default function Booking() {
             <div className="radio-row">
               <label>
                 <input
-                  type="radio"
-                  value="center"
-                  {...register("visitType", { required: true })}
-                  onChange={() => setVisitType("center")}
-                  defaultChecked
-                />
+  type="radio"
+  value="center"
+  {...register("visitType", { required: true })}
+  onChange={() => setVisitType("center")}
+/>
+
                 At Centre
               </label>
 
