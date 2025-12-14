@@ -27,11 +27,16 @@ export default function Booking() {
   register,
   handleSubmit,
   setValue,
-  formState: { errors },
+  formState: {
+    errors,
+    isSubmitting = false,
+    isSubmitSuccessful = false,
+  },
   reset,
 } = useForm({
   shouldUnregister: false,
 });
+
 
 
   const LAB_SERVICES = [
