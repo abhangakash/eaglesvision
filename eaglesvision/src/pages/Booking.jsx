@@ -23,13 +23,16 @@ export default function Booking() {
   const [visitType, setVisitType] = useState("center");
   const [availableTimes, setAvailableTimes] = useState([]);
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
-    reset,
-  } = useForm();
+ const {
+  register,
+  handleSubmit,
+  setValue,
+  formState: { errors },
+  reset,
+} = useForm({
+  shouldUnregister: false,
+});
+
 
   const LAB_SERVICES = [
     "Blood tests",
@@ -94,9 +97,10 @@ export default function Booking() {
     if (data.visitType === "center") {
       locationDetails = `📍 Center: ${data.centerLocation}`;
     } else {
-      const fullAddress = `${data.addressLine1}${
-        data.addressLine2 ? ", " + data.addressLine2 : ""
-      }, ${data.city} - ${data.pin}`;
+      const fullAddress = `${data.addressLine1 || ""}${
+  data.addressLine2 ? ", " + data.addressLine2 : ""
+}, ${data.city || ""} - ${data.pin || ""}`;
+
       locationDetails = `🏠 Home Address: ${fullAddress}`;
     }
 
