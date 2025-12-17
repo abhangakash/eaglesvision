@@ -23,25 +23,16 @@ export default function Booking() {
   const [visitType, setVisitType] = useState("center");
   const [availableTimes, setAvailableTimes] = useState([]);
 
- const {
-  register,
-  handleSubmit,
-  setValue,
-  formState: {
-    errors,
-    isSubmitting = false,
-    isSubmitSuccessful = false,
-  },
-  reset,
-} = useForm({
-  shouldUnregister: false,
-  defaultValues: {
-    visitType: "center",
-  },
-});
-
-
-
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
+    reset,
+  } = useForm({
+    shouldUnregister: false,
+    defaultValues: { visitType: "center" },
+  });
 
   const LAB_SERVICES = [
     "Blood tests",
@@ -73,6 +64,35 @@ export default function Booking() {
 
   const XRAY_SERVICES = ["X-ray", "ECG", "Echocardiography"];
 
+  const today = new Date();
+  const minDate = today.toISOString().split("T")[0];
+
+  const generateTimes = (startHour, endHour) => {
+    const times = [];
+    for (let hour = startHour; hour <= endHour; hour++) {
+      for (let minute of [0, 30]) {
+        const t = new Date();
+        t.setHours(hour, minute, 0);
+        times.push(
+          t.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          })
+        );
+      }
+    }
+    return times;
+  };
+
+  useEffect(() => {
+    setAvailableTimes(
+      visitType === "center"
+        ? generateTimes(0, 23)
+        : generateTimes(7, 20)
+    );
+  }, [visitType]);
+
   const onSubmit = (data) => {
     const selectedServicesArray = data.services || [];
 
@@ -86,61 +106,54 @@ export default function Booking() {
 
     const selectedServices = `${servicesList}${otherServiceText}`;
 
-    const hasLab = selectedServicesArray.some((s) => LAB_SERVICES.includes(s));
-    const hasXray = selectedServicesArray.some((s) => XRAY_SERVICES.includes(s));
+    const hasLab = selectedServicesArray.some((s) =>
+      LAB_SERVICES.includes(s)
+    );
+    const hasXray = selectedServicesArray.some((s) =>
+      XRAY_SERVICES.includes(s)
+    );
     const hasOnlyOther =
       selectedServicesArray.length === 1 &&
       selectedServicesArray.includes("Other");
 
     let targetNumbers = [];
-
     if (hasLab) targetNumbers.push(LAB_WHATSAPP);
     if (hasXray) targetNumbers.push(XRAY_WHATSAPP);
-
     if (!hasLab && !hasXray && hasOnlyOther) {
       targetNumbers = [LAB_WHATSAPP];
     }
 
+    if (targetNumbers.length === 0) return;
+
     let locationDetails;
-
-    if ((data.visitType || visitType) === "center") {
-
+    if (data.visitType === "center") {
       locationDetails = `📍 Center: ${data.centerLocation}`;
     } else {
       const fullAddress = `${data.addressLine1 || ""}${
-  data.addressLine2 ? ", " + data.addressLine2 : ""
-}, ${data.city || ""} - ${data.pin || ""}`;
-
+        data.addressLine2 ? ", " + data.addressLine2 : ""
+      }, ${data.city || ""} - ${data.pin || ""}`;
       locationDetails = `🏠 Home Address: ${fullAddress}`;
     }
 
-    // ---------------------------------------------------------
-    // ✅ FIXED WHATSAPP NEWLINE ISSUE — USING "\n"
-    // ---------------------------------------------------------
     const messageLines = [
       "*✨ New Appointment Request! ✨*",
       "-------------------------------------------------",
-      `👤 *Name*: ${data.name}`,
-      `📱 *Phone*: ${data.phone}`,
-      `📝 *Service(s)*: ${selectedServices}`,
-      `✅ *Visit Type*: ${data.visitType === "center" ? "At Centre" : "At Home"}`,
+      `👤 Name: ${data.name}`,
+      `📱 Phone: ${data.phone}`,
+      `📝 Services: ${selectedServices}`,
+      `✅ Visit Type: ${data.visitType === "center" ? "At Centre" : "At Home"}`,
       `🗺️ ${locationDetails}`,
-      `📅 *Date & Time*: ${data.date} at ${data.time}`,
-      `💬 *Notes*: ${data.notes || "None provided"}`,
+      `📅 Date & Time: ${data.date} at ${data.time}`,
+      `💬 Notes: ${data.notes || "None"}`,
       "-------------------------------------------------",
     ];
 
-    const message = messageLines.join("\n");
+    const message = messageLines.join("\n").slice(0, 3000);
     const encodedMessage = encodeURIComponent(message);
-    // ---------------------------------------------------------
 
-    targetNumbers.forEach((num) => {
-      window.open(`https://wa.me/${num}?text=${encodedMessage}`, "_blank");
-    });
-
-    alert(
-      "A new WhatsApp tab has opened. Please send the message to complete your booking!"
-    );
+    // ✅ iOS SAFE: single redirect
+    const whatsappNumber = targetNumbers[0];
+    window.location.href = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
     reset();
     setServiceOther(false);
@@ -158,16 +171,8 @@ export default function Booking() {
     /^[6-9][0-9]{9}$/.test(value) ||
     "Must be 10 digits, starting with 6, 7, 8, or 9";
 
-  const handleNameKeyPress = (e) => {
-    if (!/^[a-zA-Z\s]$/.test(e.key)) e.preventDefault();
-  };
-
-  const handleAddressKeyPress = (e) => {
-    if (!/^[a-zA-Z0-9\s,.-]$/.test(e.key)) e.preventDefault();
-  };
-
   const handlePhoneInput = (e) => {
-    e.target.value = e.target.value.replace(/[^0-9]/g, "").slice(0, 10);
+    e.target.value = e.target.value.replace(/\D/g, "").slice(0, 10);
   };
 
   const handleOtherChange = (e) => {
@@ -176,64 +181,32 @@ export default function Booking() {
     if (!checked) setValue("otherService", "");
   };
 
-  const today = new Date();
-  const minDate = today.toISOString().split("T")[0];
-
-  const generateTimes = (startHour, endHour) => {
-    const times = [];
-    for (let hour = startHour; hour <= endHour; hour++) {
-      for (let minute of [0, 30]) {
-        const time = new Date();
-        time.setHours(hour, minute, 0);
-        const formatted = time.toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: true,
-        });
-        times.push(formatted);
-      }
-    }
-    return times;
-  };
-
-  useEffect(() => {
-    if (visitType === "center") {
-      setAvailableTimes(generateTimes(0, 23));
-    } else {
-      setAvailableTimes(generateTimes(7, 20));
-    }
-  }, [visitType]);
-
   return (
     <section className="booking" id="booking">
       <div className="booking-container">
         <h2 className="booking-title">Book an Appointment</h2>
-        <p className="booking-subtitle">
-          Schedule your diagnostic test with our experienced team.
-          We'll confirm your appointment via WhatsApp.
-        </p>
 
         {isSubmitSuccessful && (
           <div className="success-message">
-            Thank you — your appointment request has been prepared!
-            **A new tab has opened with WhatsApp. Please send the
-            message to complete your booking.**
+            A WhatsApp tab has opened. Please send the message to complete booking.
           </div>
         )}
 
-        <form className="booking-form" onSubmit={handleSubmit(onSubmit)} noValidate>
-
+        <form
+          className="booking-form"
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+        >
           {/* NAME */}
           <div className="form-group">
             <label htmlFor="name">
-              <FaUser size={ICON_SIZE} style={{ marginRight: "8px" }} />
-              Patient Name <span style={{ color: "red" }}>*</span>
+              <FaUser size={ICON_SIZE} /> Patient Name{" "}
+              <span style={{ color: "red" }}>*</span>
             </label>
             <input
               id="name"
               type="text"
               placeholder="Enter Patient Full Name"
-              onKeyPress={handleNameKeyPress}
               {...register("name", {
                 required: "Full name is required",
                 validate: validateName,
@@ -245,12 +218,13 @@ export default function Booking() {
           {/* PHONE */}
           <div className="form-group">
             <label htmlFor="phone">
-              <FaMobileAlt size={ICON_SIZE} style={{ marginRight: "8px" }} />
-              Mobile Number <span style={{ color: "red" }}>*</span>
+              <FaMobileAlt size={ICON_SIZE} /> Mobile Number{" "}
+              <span style={{ color: "red" }}>*</span>
             </label>
             <input
               id="phone"
               type="tel"
+              inputMode="numeric"
               placeholder="Enter 10 Digit Valid Mobile Number"
               onInput={handlePhoneInput}
               {...register("phone", {
@@ -264,23 +238,25 @@ export default function Booking() {
           {/* SERVICES */}
           <div className="form-group">
             <label>
-              <FaStethoscope size={ICON_SIZE} style={{ marginRight: "8px" }} />
-              Select Service Type <span style={{ color: "red" }}>*</span>
+              <FaStethoscope size={ICON_SIZE} /> Select Service Type{" "}
+              <span style={{ color: "red" }}>*</span>
             </label>
 
-            {/* XRAY */}
-            <h4 style={{ marginTop: "10px" }}>🩻 X-ray Services</h4>
+            <h4>🩻 X-ray Services</h4>
             <div className="checkbox-group">
               {XRAY_SERVICES.map((service) => (
                 <label key={service}>
-                  <input type="checkbox" value={service} {...register("services")} />
+                  <input
+                    type="checkbox"
+                    value={service}
+                    {...register("services")}
+                  />
                   {service}
                 </label>
               ))}
             </div>
 
-            {/* LAB */}
-            <h4 style={{ marginTop: "10px" }}>🧪 Lab Services</h4>
+            <h4>🧪 Lab Services</h4>
             <div className="checkbox-group">
               {LAB_SERVICES.map((service) => (
                 <label key={service}>
@@ -295,9 +271,9 @@ export default function Booking() {
                   {service}
                 </label>
               ))}
-            </div>
+            </div><br></br>
 
-            <label style={{ marginTop: "10px" }}>
+            <label>
               <input
                 type="checkbox"
                 value="Other"
@@ -306,8 +282,6 @@ export default function Booking() {
               />
               Other
             </label>
-
-            {errors.services && <p className="error">{errors.services.message}</p>}
 
             {serviceOther && (
               <input
@@ -319,27 +293,26 @@ export default function Booking() {
               />
             )}
 
-            {errors.otherService && (
-              <p className="error">{errors.otherService.message}</p>
+            {errors.services && (
+              <p className="error">{errors.services.message}</p>
             )}
           </div>
 
           {/* VISIT TYPE */}
           <div className="form-group horizontal-group">
             <label>
-              <FaCheckCircle size={ICON_SIZE} style={{ marginRight: "8px" }} />
-              Visit Type <span style={{ color: "red" }}>*</span>
+              <FaCheckCircle size={ICON_SIZE} /> Visit Type{" "}
+              <span style={{ color: "red" }}>*</span>
             </label>
 
             <div className="radio-row">
               <label>
                 <input
-  type="radio"
-  value="center"
-  {...register("visitType", { required: true })}
-  onChange={() => setVisitType("center")}
-/>
-
+                  type="radio"
+                  value="center"
+                  {...register("visitType", { required: true })}
+                  onChange={() => setVisitType("center")}
+                />
                 At Centre
               </label>
 
@@ -361,20 +334,17 @@ export default function Booking() {
           {visitType === "center" && (
             <div className="form-group">
               <label>
-                <FaHospital size={ICON_SIZE} style={{ marginRight: "8px" }} />
-                Centre Location <span style={{ color: "red" }}>*</span>
+                <FaHospital size={ICON_SIZE} /> Centre Location{" "}
+                <span style={{ color: "red" }}>*</span>
               </label>
 
               <select {...register("centerLocation", { required: true })}>
                 <option value="Shop No. 10, 1st Floor, Ganesh Bella Montana, Shinde Wasti Chowk, Ravet, Pune-412101">
-                  Shop No. 10, 1st Floor, Ganesh Bella Montana, Shinde Wasti Chowk, Ravet, Pune-412101
+                  Shop No. 10, 1st Floor, Ganesh Bella Montana, Shinde Wasti Chowk,
+                  Ravet, Pune-412101
                 </option>
                 <option disabled>Other locations - Coming soon</option>
               </select>
-
-              {errors.centerLocation && (
-                <p className="error">Centre location is required</p>
-              )}
             </div>
           )}
 
@@ -382,40 +352,36 @@ export default function Booking() {
           {visitType === "home" && (
             <div className="form-group">
               <label>
-                <FaHome size={ICON_SIZE} style={{ marginRight: "8px" }} />
-                Home Address <span style={{ color: "red" }}>*</span>
+                <FaHome size={ICON_SIZE} /> Home Address{" "}
+                <span style={{ color: "red" }}>*</span>
               </label>
 
               <input
                 type="text"
                 placeholder="Enter Address Line 1"
-                onKeyPress={handleAddressKeyPress}
                 {...register("addressLine1", {
                   required: "Address Line 1 is required",
                 })}
               />
-              {errors.addressLine1 && (
-                <p className="error">{errors.addressLine1.message}</p>
-              )}
-
               <input
                 type="text"
                 placeholder="Enter Address Line 2 (Optional)"
-                onKeyPress={handleAddressKeyPress}
                 {...register("addressLine2")}
               />
-
               <input
                 type="text"
                 placeholder="Enter City Name"
-                onKeyPress={handleAddressKeyPress}
                 {...register("city", { required: "City is required" })}
               />
-              {errors.city && <p className="error">{errors.city.message}</p>}
-
               <input
                 type="text"
                 placeholder="Enter PIN Code"
+                inputMode="numeric"
+                onInput={(e) =>
+                  (e.target.value = e.target.value
+                    .replace(/\D/g, "")
+                    .slice(0, 6))
+                }
                 {...register("pin", {
                   required: "PIN is required",
                   pattern: {
@@ -423,13 +389,7 @@ export default function Booking() {
                     message: "6 digit PIN only",
                   },
                 })}
-                onInput={(e) => {
-                  e.target.value = e.target.value
-                    .replace(/[^0-9]/g, "")
-                    .slice(0, 6);
-                }}
               />
-              {errors.pin && <p className="error">{errors.pin.message}</p>}
             </div>
           )}
 
@@ -437,24 +397,24 @@ export default function Booking() {
           <div className="form-group horizontal-group">
             <div>
               <label>
-                <FaCalendarAlt size={ICON_SIZE} style={{ marginRight: "8px" }} />
-                Date <span style={{ color: "red" }}>*</span>
+                <FaCalendarAlt size={ICON_SIZE} /> Date{" "}
+                <span style={{ color: "red" }}>*</span>
               </label>
-
               <input
                 type="date"
                 min={minDate}
-                {...register("date", { required: "Date is required" })}
+                {...register("date", {
+                  required: "Date is required",
+                  pattern: /^\d{4}-\d{2}-\d{2}$/,
+                })}
               />
-              {errors.date && <p className="error">{errors.date.message}</p>}
             </div>
 
             <div>
               <label>
-                <FaClock size={ICON_SIZE} style={{ marginRight: "8px" }} />
-                Time <span style={{ color: "red" }}>*</span>
+                <FaClock size={ICON_SIZE} /> Time{" "}
+                <span style={{ color: "red" }}>*</span>
               </label>
-
               <select {...register("time", { required: "Time is required" })}>
                 <option value="">Select Time</option>
                 {availableTimes.map((time) => (
@@ -463,30 +423,23 @@ export default function Booking() {
                   </option>
                 ))}
               </select>
-
-              {errors.time && <p className="error">{errors.time.message}</p>}
             </div>
           </div>
 
           {/* NOTES */}
           <div className="form-group">
             <label>
-              <FaStickyNote size={ICON_SIZE} style={{ marginRight: "8px" }} />
-              Additional Instructions (Optional)
+              <FaStickyNote size={ICON_SIZE} /> Additional Instructions
             </label>
-
             <textarea
-              placeholder="Enter Additional Instructions If Any "
               rows="4"
+              placeholder="Enter Additional Instructions If Any"
               {...register("notes", {
                 maxLength: { value: 500, message: "Max 500 characters" },
               })}
-            ></textarea>
-
-            {errors.notes && <p className="error">{errors.notes.message}</p>}
+            />
           </div>
 
-          {/* SUBMIT */}
           <button type="submit" className="submit-btn" disabled={isSubmitting}>
             {isSubmitting
               ? "Generating WhatsApp Message…"
