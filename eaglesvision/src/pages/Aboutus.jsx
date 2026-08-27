@@ -4,10 +4,10 @@ import { FaUserTie, FaUserGraduate, FaFlask, FaBullhorn, FaHeartbeat, FaMicrosco
 import { Helmet } from "react-helmet-async";
 
 const teamMembers = [
-  { name: "Aditya D. Korde", role: "Founder & HOD Finance Dept.", icon: <FaUserTie /> },
-  { name: "Vaibhav G. Gavali", role: "Co-Founder & Marketing Director", icon: <FaBullhorn /> },
-  { name: "Amit A. Shinde", role: "Co-Founder & Project Manager", icon: <FaUserGraduate /> },
-  { name: "Shivshambhu G. More", role: "Co-Founder & Lab Director", icon: <FaFlask /> },
+  { name: "Aditya D. Korde", role: "Co-Founder", icon: <FaUserTie /> },
+  { name: "Vaibhav G. Gavali", role: "Co-Founder", icon: <FaBullhorn /> },
+  { name: "Amit A. Shinde", role: "Co-Founder", icon: <FaUserGraduate /> },
+  { name: "Shivshambhu G. More", role: "Co-Founder", icon: <FaFlask /> },
 ];
 
 const stats = [
